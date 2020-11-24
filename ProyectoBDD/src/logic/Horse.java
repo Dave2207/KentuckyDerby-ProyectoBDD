@@ -11,6 +11,18 @@ public class Horse {
 	private int WonRaces;
 	private String Breed;
 	
+	public Horse(String horseName, String barn, String gender, int age, String gear, int score, int wonRaces,
+			String breed) {
+		super();
+		HorseName = horseName;
+		Barn = barn;
+		Gender = gender;
+		Age = age;
+		Gear = gear;
+		Score = score;
+		WonRaces = wonRaces;
+		Breed = breed;
+	}
 	// ***Setters & Getters***
 	public String getHorseName() {
 		return HorseName;

@@ -7,6 +7,13 @@ public class Owner {
 	private String LastName; 
 	private String StateResidence;
 	
+	public Owner(int ownerID, String firstName, String lastName, String stateResidence) {
+		super();
+		OwnerID = ownerID;
+		FirstName = firstName;
+		LastName = lastName;
+		StateResidence = stateResidence;
+	}
 	// ***Setters & Getters***
 	public int getOwnerID() {
 		return OwnerID;

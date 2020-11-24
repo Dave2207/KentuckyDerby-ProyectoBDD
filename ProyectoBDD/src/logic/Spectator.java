@@ -6,7 +6,13 @@ public class Spectator {
 	private float BetAmount; 
 	private int AccontNo;
 	
-//	*** Getters & Setters****
+public Spectator(int ticketNo, float betAmount, int accontNo) {
+		super();
+		TicketNo = ticketNo;
+		BetAmount = betAmount;
+		AccontNo = accontNo;
+	}
+	//	*** Getters & Setters****
 	public int getTicketNo() {
 		return TicketNo;
 	}

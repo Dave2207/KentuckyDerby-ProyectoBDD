@@ -11,6 +11,18 @@ public class Employee {
 	private String Position; 
 	private int ZIP_code;
 	
+	public Employee(int iD, String firstName, String lastName, int age, String birthday, String gender, String position,
+			int zIP_code) {
+		super();
+		ID = iD;
+		FirstName = firstName;
+		LastName = lastName;
+		Age = age;
+		Birthday = birthday;
+		Gender = gender;
+		Position = position;
+		ZIP_code = zIP_code;
+	}
 	// ***Setters & Getters***
 	public int getID() {
 		return ID;

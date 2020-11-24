@@ -12,6 +12,19 @@ public class RaceEntry {
 	private int MorningLineOdds; 
 	private int FinalOdds;
 	
+	public RaceEntry(int gateNumber, String jockeyName, String horseName, int margins, int finishPositon,
+			int timeElapsed, int amountWon, int morningLineOdds, int finalOdds) {
+		super();
+		GateNumber = gateNumber;
+		JockeyName = jockeyName;
+		HorseName = horseName;
+		Margins = margins;
+		FinishPositon = finishPositon;
+		TimeElapsed = timeElapsed;
+		AmountWon = amountWon;
+		MorningLineOdds = morningLineOdds;
+		FinalOdds = finalOdds;
+	}
 	//	*** Getters & Setters****
 	public int getGateNumber() {
 		return GateNumber;

@@ -7,7 +7,14 @@ public class Trainer {
 	private String LastName;
 	private String StateResidence;
 	
-//	*** Getters & Setters****
+public Trainer(int trainerID, String firstName, String lastName, String stateResidence) {
+		super();
+		TrainerID = trainerID;
+		FirstName = firstName;
+		LastName = lastName;
+		StateResidence = stateResidence;
+	}
+	//	*** Getters & Setters****
 	public int getTrainerID() {
 		return TrainerID;
 	}

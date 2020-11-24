@@ -11,6 +11,18 @@ public class Jockey {
 	private int YearsOfExp;
 	private int JockeyWeight;
 	
+	public Jockey(int jockeyID, String firstName, String lastName, String gender, String stateResidence, int wonRaces,
+			int yearsOfExp, int jockeyWeight) {
+		super();
+		JockeyID = jockeyID;
+		FirstName = firstName;
+		LastName = lastName;
+		Gender = gender;
+		StateResidence = stateResidence;
+		WonRaces = wonRaces;
+		YearsOfExp = yearsOfExp;
+		JockeyWeight = jockeyWeight;
+	}
 	// ***Setters & Getters***
 	public int getJockeyID() {
 		return JockeyID;
