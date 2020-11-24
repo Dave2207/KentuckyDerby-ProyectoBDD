@@ -10,11 +10,11 @@ public class Jockey {
 	private int WonRaces; 
 	private int YearsOfExp;
 	private int JockeyWeight;
+	
+	// ***Setters & Getters***
 	public int getJockeyID() {
 		return JockeyID;
 	}
-	
-	// *** Setters & Getters***
 	public void setJockeyID(int jockeyID) {
 		JockeyID = jockeyID;
 	}

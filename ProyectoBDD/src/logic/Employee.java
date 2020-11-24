@@ -10,12 +10,11 @@ public class Employee {
 	private String Gender; 
 	private String Position; 
 	private int ZIP_code;
+	
+	// ***Setters & Getters***
 	public int getID() {
 		return ID;
 	}
-	
-	
-	// ***Setters & Getters***
 	public void setID(int iD) {
 		ID = iD;
 	}

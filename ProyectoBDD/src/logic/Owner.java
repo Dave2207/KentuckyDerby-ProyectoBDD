@@ -6,11 +6,11 @@ public class Owner {
 	private String FirstName; 
 	private String LastName; 
 	private String StateResidence;
+	
+	// ***Setters & Getters***
 	public int getOwnerID() {
 		return OwnerID;
 	}
-	
-	//*** Setters & Getters***
 	public void setOwnerID(int ownerID) {
 		OwnerID = ownerID;
 	}

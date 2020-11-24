@@ -10,11 +10,11 @@ public class Horse {
 	private int Score; 
 	private int WonRaces;
 	private String Breed;
+	
+	// ***Setters & Getters***
 	public String getHorseName() {
 		return HorseName;
 	}
-	
-	// ***Setters & Getters*** 
 	public void setHorseName(String horseName) {
 		HorseName = horseName;
 	}
