@@ -23,6 +23,7 @@ public class Horse {
 		WonRaces = wonRaces;
 		Breed = breed;
 	}
+
 	// ***Setters & Getters***
 	public String getHorseName() {
 		return HorseName;
