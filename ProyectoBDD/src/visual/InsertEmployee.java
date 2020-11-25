@@ -8,10 +8,15 @@ import javax.swing.JDialog;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.JRadioButton;
 import javax.swing.JSpinner;
 import javax.swing.border.TitledBorder;
+
+import logic.Derby;
+import logic.Employee;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
@@ -26,6 +31,8 @@ public class InsertEmployee extends JDialog {
 	private JTextField txtFechaNac;
 	private JSpinner spnEdad;
 	private JTextField txtZipCode;
+	private JRadioButton rdbnGenMasc;
+	private JRadioButton rdbnGenFem;
 
 	/**
 	 * Launch the application.
@@ -57,8 +64,6 @@ public class InsertEmployee extends JDialog {
 		}
 		{
 			txtIdEmp = new JTextField();
-			txtIdEmp.setEnabled(false);
-			txtIdEmp.setEditable(false);
 			txtIdEmp.setColumns(10);
 			txtIdEmp.setBounds(139, 18, 86, 20);
 			contentPanel.add(txtIdEmp);
@@ -102,12 +107,24 @@ public class InsertEmployee extends JDialog {
 			contentPanel.add(label);
 		}
 		{
-			JRadioButton rdbnGenMasc = new JRadioButton("M");
+			rdbnGenMasc = new JRadioButton("M");
+			rdbnGenMasc.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					rdbnGenMasc.setSelected(true);
+					rdbnGenFem.setSelected(false);
+				}
+			});
 			rdbnGenMasc.setBounds(139, 101, 46, 23);
 			contentPanel.add(rdbnGenMasc);
 		}
 		{
-			JRadioButton rdbnGenFem = new JRadioButton("F");
+			rdbnGenFem = new JRadioButton("F");
+			rdbnGenFem.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					rdbnGenMasc.setSelected(false);
+					rdbnGenFem.setSelected(true);
+				}
+			});
 			rdbnGenFem.setBounds(193, 101, 46, 23);
 			contentPanel.add(rdbnGenFem);
 		}
@@ -160,6 +177,20 @@ public class InsertEmployee extends JDialog {
 			getContentPane().add(buttonPane, BorderLayout.SOUTH);
 			{
 				JButton okButton = new JButton("Registrar");
+				okButton.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+						if(rdbnGenMasc.isSelected()) {
+							Employee emp = new Employee(Integer.parseInt(txtIdEmp.getText()), txtNombreEmp.getText(), txtApellidoEmp.getText(), Integer.parseInt(spnEdad.getValue().toString()), txtFechaNac.getText(), "M", txtPosEmp.getText(), Integer.parseInt(txtZipCode.getText()));
+							Derby.getInstance().registrarEmpleado(emp);
+							JOptionPane.showMessageDialog(null, "Operacion Satisfactoria", "Notificacion", JOptionPane.INFORMATION_MESSAGE);
+						}
+						if(rdbnGenFem.isSelected()) {
+							Employee emp = new Employee(Integer.parseInt(txtIdEmp.getText()), txtNombreEmp.getText(), txtApellidoEmp.getText(), Integer.parseInt(spnEdad.getValue().toString()), txtFechaNac.getText(), "F", txtPosEmp.getText(), Integer.parseInt(txtZipCode.getText()));
+							Derby.getInstance().registrarEmpleado(emp);
+							JOptionPane.showMessageDialog(null, "Operacion Satisfactoria", "Notificacion", JOptionPane.INFORMATION_MESSAGE);
+						}
+					}
+				});
 				okButton.setActionCommand("OK");
 				buttonPane.add(okButton);
 				getRootPane().setDefaultButton(okButton);
