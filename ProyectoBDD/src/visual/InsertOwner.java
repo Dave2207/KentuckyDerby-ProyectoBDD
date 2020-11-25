@@ -40,12 +40,14 @@ public class InsertOwner extends JDialog {
 	 * Create the dialog.
 	 */
 	public InsertOwner() {
+		setResizable(false);
 		setTitle("Registro Owner");
 		setBounds(100, 100, 429, 248);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
 		contentPanel.setLayout(null);
+		setLocationRelativeTo(null);
 		{
 			JLabel label = new JLabel("ID: ");
 			label.setBounds(28, 32, 18, 14);

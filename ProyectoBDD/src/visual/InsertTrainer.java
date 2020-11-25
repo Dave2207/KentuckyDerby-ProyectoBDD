@@ -38,12 +38,14 @@ public class InsertTrainer extends JDialog {
 	 * Create the dialog.
 	 */
 	public InsertTrainer() {
+		setResizable(false);
 		setTitle("Registro Trainer");
 		setBounds(100, 100, 429, 248);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
 		contentPanel.setLayout(null);
+		setLocationRelativeTo(null);
 		
 		JLabel lblId = new JLabel("ID: ");
 		lblId.setBounds(27, 36, 18, 14);

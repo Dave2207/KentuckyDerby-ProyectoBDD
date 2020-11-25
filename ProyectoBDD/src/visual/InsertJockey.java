@@ -41,12 +41,14 @@ public class InsertJockey extends JDialog {
 	 * Create the dialog.
 	 */
 	public InsertJockey() {
+		setResizable(false);
 		setTitle("Registro Jockey");
 		setBounds(100, 100, 422, 297);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
 		contentPanel.setLayout(null);
+		setLocationRelativeTo(null);
 		{
 			JLabel lblId = new JLabel("ID:");
 			lblId.setBounds(22, 25, 46, 14);

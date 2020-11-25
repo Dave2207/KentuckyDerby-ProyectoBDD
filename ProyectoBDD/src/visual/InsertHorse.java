@@ -54,6 +54,7 @@ public class InsertHorse extends JDialog {
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
 		contentPanel.setLayout(null);
+		setLocationRelativeTo(null);
 		{
 			JLabel lblGear = new JLabel("Gear:");
 			lblGear.setBounds(22, 111, 70, 14);
@@ -120,7 +121,7 @@ public class InsertHorse extends JDialog {
 					rdbnGenFem.setSelected(false);
 				}
 			});
-			rdbnGenMasc.setBounds(139, 101, 46, 23);
+			rdbnGenMasc.setBounds(78, 163, 46, 23);
 			contentPanel.add(rdbnGenMasc);
 		}
 		{
@@ -131,7 +132,7 @@ public class InsertHorse extends JDialog {
 					rdbnGenFem.setSelected(true);
 				}
 			});
-			rdbnGenFem.setBounds(193, 101, 46, 23);
+			rdbnGenFem.setBounds(126, 163, 46, 23);
 			contentPanel.add(rdbnGenFem);
 		}
 		{

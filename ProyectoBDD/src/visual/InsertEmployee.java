@@ -51,12 +51,14 @@ public class InsertEmployee extends JDialog {
 	 * Create the dialog.
 	 */
 	public InsertEmployee() {
+		setResizable(false);
 		setTitle("Registro Empleado\r\n");
 		setBounds(100, 100, 443, 336);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
 		contentPanel.setLayout(null);
+		setLocationRelativeTo(null);
 		{
 			JLabel label = new JLabel("ID:");
 			label.setBounds(34, 21, 46, 14);
