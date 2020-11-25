@@ -67,45 +67,45 @@ public class InsertEmployee extends JDialog {
 		{
 			txtIdEmp = new JTextField();
 			txtIdEmp.setColumns(10);
-			txtIdEmp.setBounds(139, 18, 86, 20);
+			txtIdEmp.setBounds(149, 18, 86, 20);
 			contentPanel.add(txtIdEmp);
 		}
 		{
 			JLabel label = new JLabel("State Residence:");
-			label.setBounds(34, 165, 86, 14);
+			label.setBounds(34, 165, 109, 14);
 			contentPanel.add(label);
 		}
 		{
 			txtStateResEmp = new JTextField();
 			txtStateResEmp.setColumns(10);
-			txtStateResEmp.setBounds(139, 164, 263, 20);
+			txtStateResEmp.setBounds(149, 164, 263, 20);
 			contentPanel.add(txtStateResEmp);
 		}
 		{
 			txtNombreEmp = new JTextField();
 			txtNombreEmp.setColumns(10);
-			txtNombreEmp.setBounds(139, 49, 263, 20);
+			txtNombreEmp.setBounds(149, 49, 263, 20);
 			contentPanel.add(txtNombreEmp);
 		}
 		{
 			JLabel label = new JLabel("Nombre:");
-			label.setBounds(34, 52, 46, 14);
+			label.setBounds(34, 52, 86, 14);
 			contentPanel.add(label);
 		}
 		{
 			JLabel label = new JLabel("Apellidos:");
-			label.setBounds(34, 77, 46, 14);
+			label.setBounds(34, 77, 86, 14);
 			contentPanel.add(label);
 		}
 		{
 			txtApellidoEmp = new JTextField();
 			txtApellidoEmp.setColumns(10);
-			txtApellidoEmp.setBounds(139, 74, 263, 20);
+			txtApellidoEmp.setBounds(149, 74, 263, 20);
 			contentPanel.add(txtApellidoEmp);
 		}
 		{
 			JLabel label = new JLabel("G\u00E9nero:");
-			label.setBounds(34, 105, 52, 14);
+			label.setBounds(34, 105, 86, 14);
 			contentPanel.add(label);
 		}
 		{
@@ -116,7 +116,7 @@ public class InsertEmployee extends JDialog {
 					rdbnGenFem.setSelected(false);
 				}
 			});
-			rdbnGenMasc.setBounds(139, 101, 46, 23);
+			rdbnGenMasc.setBounds(149, 101, 46, 23);
 			contentPanel.add(rdbnGenMasc);
 		}
 		{
@@ -127,39 +127,39 @@ public class InsertEmployee extends JDialog {
 					rdbnGenFem.setSelected(true);
 				}
 			});
-			rdbnGenFem.setBounds(193, 101, 46, 23);
+			rdbnGenFem.setBounds(206, 101, 46, 23);
 			contentPanel.add(rdbnGenFem);
 		}
 		{
 			JLabel lblPosicin = new JLabel("Posici\u00F3n:");
-			lblPosicin.setBounds(34, 196, 86, 14);
+			lblPosicin.setBounds(34, 196, 95, 14);
 			contentPanel.add(lblPosicin);
 		}
 		{
 			txtPosEmp = new JTextField();
 			txtPosEmp.setColumns(10);
-			txtPosEmp.setBounds(139, 195, 263, 20);
+			txtPosEmp.setBounds(149, 195, 263, 20);
 			contentPanel.add(txtPosEmp);
 		}
 		{
 			JLabel label = new JLabel("Edad:");
-			label.setBounds(276, 109, 46, 14);
+			label.setBounds(290, 105, 46, 14);
 			contentPanel.add(label);
 		}
 		{
 			spnEdad = new JSpinner();
-			spnEdad.setBounds(332, 106, 70, 20);
+			spnEdad.setBounds(342, 102, 70, 20);
 			contentPanel.add(spnEdad);
 		}
 		{
 			JLabel label = new JLabel("Fecha Nacimiento:");
-			label.setBounds(34, 139, 101, 14);
+			label.setBounds(34, 139, 109, 14);
 			contentPanel.add(label);
 		}
 		{
 			txtFechaNac = new JTextField();
 			txtFechaNac.setColumns(10);
-			txtFechaNac.setBounds(139, 134, 263, 20);
+			txtFechaNac.setBounds(149, 133, 263, 20);
 			contentPanel.add(txtFechaNac);
 		}
 		{
@@ -170,7 +170,7 @@ public class InsertEmployee extends JDialog {
 		{
 			txtZipCode = new JTextField();
 			txtZipCode.setColumns(10);
-			txtZipCode.setBounds(139, 226, 263, 20);
+			txtZipCode.setBounds(149, 226, 263, 20);
 			contentPanel.add(txtZipCode);
 		}
 		{

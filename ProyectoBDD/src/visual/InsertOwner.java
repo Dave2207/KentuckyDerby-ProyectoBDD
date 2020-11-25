@@ -50,7 +50,7 @@ public class InsertOwner extends JDialog {
 		setLocationRelativeTo(null);
 		{
 			JLabel label = new JLabel("ID: ");
-			label.setBounds(28, 32, 18, 14);
+			label.setBounds(28, 32, 62, 14);
 			contentPanel.add(label);
 		}
 		{
@@ -58,40 +58,40 @@ public class InsertOwner extends JDialog {
 			txtIdOwner.setEnabled(false);
 			txtIdOwner.setEditable(false);
 			txtIdOwner.setColumns(10);
-			txtIdOwner.setBounds(124, 29, 86, 20);
+			txtIdOwner.setBounds(134, 29, 86, 20);
 			contentPanel.add(txtIdOwner);
 		}
 		{
 			JLabel label = new JLabel("Nombre:");
-			label.setBounds(28, 63, 46, 14);
+			label.setBounds(28, 63, 86, 14);
 			contentPanel.add(label);
 		}
 		{
 			txtNombreOwner = new JTextField();
 			txtNombreOwner.setColumns(10);
-			txtNombreOwner.setBounds(124, 60, 186, 20);
+			txtNombreOwner.setBounds(134, 60, 186, 20);
 			contentPanel.add(txtNombreOwner);
 		}
 		{
 			JLabel label = new JLabel("Apellidos:");
-			label.setBounds(28, 88, 46, 14);
+			label.setBounds(28, 88, 86, 14);
 			contentPanel.add(label);
 		}
 		{
 			txtApellidoOwner = new JTextField();
 			txtApellidoOwner.setColumns(10);
-			txtApellidoOwner.setBounds(124, 85, 186, 20);
+			txtApellidoOwner.setBounds(134, 85, 186, 20);
 			contentPanel.add(txtApellidoOwner);
 		}
 		{
 			JLabel label = new JLabel("State Residence:");
-			label.setBounds(28, 119, 86, 14);
+			label.setBounds(28, 119, 107, 14);
 			contentPanel.add(label);
 		}
 		{
 			txtStateResOwner = new JTextField();
 			txtStateResOwner.setColumns(10);
-			txtStateResOwner.setBounds(124, 116, 263, 20);
+			txtStateResOwner.setBounds(134, 116, 263, 20);
 			contentPanel.add(txtStateResOwner);
 		}
 		{

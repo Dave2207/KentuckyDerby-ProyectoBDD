@@ -58,51 +58,51 @@ public class InsertJockey extends JDialog {
 			txtIdJockey = new JTextField();
 			txtIdJockey.setEditable(false);
 			txtIdJockey.setEnabled(false);
-			txtIdJockey.setBounds(78, 22, 86, 20);
+			txtIdJockey.setBounds(88, 22, 86, 20);
 			contentPanel.add(txtIdJockey);
 			txtIdJockey.setColumns(10);
 		}
 		{
 			JLabel label = new JLabel("Nombre:");
-			label.setBounds(22, 56, 46, 14);
+			label.setBounds(22, 56, 64, 14);
 			contentPanel.add(label);
 		}
 		{
 			txtNombreJockey = new JTextField();
 			txtNombreJockey.setColumns(10);
-			txtNombreJockey.setBounds(78, 53, 312, 20);
+			txtNombreJockey.setBounds(88, 53, 312, 20);
 			contentPanel.add(txtNombreJockey);
 		}
 		{
 			JLabel label = new JLabel("Apellidos:");
-			label.setBounds(22, 81, 46, 14);
+			label.setBounds(22, 87, 64, 14);
 			contentPanel.add(label);
 		}
 		{
 			txtApellidoJockey = new JTextField();
 			txtApellidoJockey.setColumns(10);
-			txtApellidoJockey.setBounds(78, 84, 312, 20);
+			txtApellidoJockey.setBounds(88, 84, 312, 20);
 			contentPanel.add(txtApellidoJockey);
 		}
 		{
 			JLabel label = new JLabel("State Residence:");
-			label.setBounds(22, 183, 86, 14);
+			label.setBounds(22, 185, 109, 14);
 			contentPanel.add(label);
 		}
 		{
 			txtStateResJockey = new JTextField();
 			txtStateResJockey.setColumns(10);
-			txtStateResJockey.setBounds(127, 182, 263, 20);
+			txtStateResJockey.setBounds(137, 182, 263, 20);
 			contentPanel.add(txtStateResJockey);
 		}
 		{
 			JLabel lblGnero = new JLabel("G\u00E9nero:");
-			lblGnero.setBounds(225, 124, 52, 14);
+			lblGnero.setBounds(243, 127, 52, 14);
 			contentPanel.add(lblGnero);
 		}
 		{
 			JLabel lblNewLabel = new JLabel("Carreras Ganadas:");
-			lblNewLabel.setBounds(22, 129, 98, 14);
+			lblNewLabel.setBounds(22, 129, 109, 14);
 			contentPanel.add(lblNewLabel);
 		}
 		{
@@ -112,20 +112,20 @@ public class InsertJockey extends JDialog {
 		}
 		
 		JRadioButton rdbtnGenMasc = new JRadioButton("M");
-		rdbtnGenMasc.setBounds(275, 120, 46, 23);
+		rdbtnGenMasc.setBounds(293, 123, 46, 23);
 		contentPanel.add(rdbtnGenMasc);
 		
 		JRadioButton rdbtnGenFem = new JRadioButton("F");
-		rdbtnGenFem.setBounds(323, 120, 46, 23);
+		rdbtnGenFem.setBounds(341, 123, 46, 23);
 		contentPanel.add(rdbtnGenFem);
 		
 		JSpinner spnWonRaces = new JSpinner();
-		spnWonRaces.setBounds(127, 126, 70, 20);
+		spnWonRaces.setBounds(137, 126, 70, 20);
 		contentPanel.add(spnWonRaces);
 		
 		JSpinner spnWeight = new JSpinner();
 		spnWeight.setModel(new SpinnerNumberModel(new Float(1), new Float(1), new Float(100), new Float(1)));
-		spnWeight.setBounds(127, 151, 70, 20);
+		spnWeight.setBounds(137, 151, 70, 20);
 		contentPanel.add(spnWeight);
 		{
 			JPanel buttonPane = new JPanel();

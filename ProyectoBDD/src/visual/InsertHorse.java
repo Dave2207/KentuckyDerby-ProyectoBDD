@@ -68,7 +68,7 @@ public class InsertHorse extends JDialog {
 		}
 		{
 			JLabel label = new JLabel("Nombre:");
-			label.setBounds(22, 29, 46, 14);
+			label.setBounds(22, 29, 70, 14);
 			contentPanel.add(label);
 		}
 		{
@@ -137,7 +137,7 @@ public class InsertHorse extends JDialog {
 		}
 		{
 			JLabel label = new JLabel("Carreras Ganadas:");
-			label.setBounds(215, 170, 98, 14);
+			label.setBounds(206, 170, 122, 14);
 			contentPanel.add(label);
 		}
 		{

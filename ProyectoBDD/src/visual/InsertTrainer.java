@@ -48,40 +48,40 @@ public class InsertTrainer extends JDialog {
 		setLocationRelativeTo(null);
 		
 		JLabel lblId = new JLabel("ID: ");
-		lblId.setBounds(27, 36, 18, 14);
+		lblId.setBounds(27, 36, 38, 14);
 		contentPanel.add(lblId);
 		
 		txtIdTrainer = new JTextField();
 		txtIdTrainer.setEnabled(false);
 		txtIdTrainer.setEditable(false);
-		txtIdTrainer.setBounds(123, 30, 86, 20);
+		txtIdTrainer.setBounds(133, 30, 86, 20);
 		contentPanel.add(txtIdTrainer);
 		txtIdTrainer.setColumns(10);
 		
 		JLabel lblNombre = new JLabel("Nombre:");
-		lblNombre.setBounds(27, 64, 46, 14);
+		lblNombre.setBounds(27, 64, 86, 14);
 		contentPanel.add(lblNombre);
 		
 		txtNombreTrainer = new JTextField();
-		txtNombreTrainer.setBounds(123, 61, 186, 20);
+		txtNombreTrainer.setBounds(133, 61, 186, 20);
 		contentPanel.add(txtNombreTrainer);
 		txtNombreTrainer.setColumns(10);
 		
 		JLabel lblApellidos = new JLabel("Apellidos:");
-		lblApellidos.setBounds(27, 89, 46, 14);
+		lblApellidos.setBounds(27, 89, 86, 14);
 		contentPanel.add(lblApellidos);
 		
 		txtApellidoTrainer = new JTextField();
-		txtApellidoTrainer.setBounds(123, 86, 186, 20);
+		txtApellidoTrainer.setBounds(133, 86, 186, 20);
 		contentPanel.add(txtApellidoTrainer);
 		txtApellidoTrainer.setColumns(10);
 		
 		JLabel lblStateResidence = new JLabel("State Residence:");
-		lblStateResidence.setBounds(27, 120, 86, 14);
+		lblStateResidence.setBounds(27, 120, 108, 14);
 		contentPanel.add(lblStateResidence);
 		
 		txtStateResTrainer = new JTextField();
-		txtStateResTrainer.setBounds(123, 117, 263, 20);
+		txtStateResTrainer.setBounds(133, 117, 263, 20);
 		contentPanel.add(txtStateResTrainer);
 		txtStateResTrainer.setColumns(10);
 		{
