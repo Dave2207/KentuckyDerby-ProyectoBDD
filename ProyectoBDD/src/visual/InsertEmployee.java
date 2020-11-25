@@ -25,6 +25,7 @@ public class InsertEmployee extends JDialog {
 	private JTextField txtPosEmp;
 	private JTextField txtFechaNac;
 	private JSpinner spnEdad;
+	private JTextField txtZipCode;
 
 	/**
 	 * Launch the application.
@@ -44,7 +45,7 @@ public class InsertEmployee extends JDialog {
 	 */
 	public InsertEmployee() {
 		setTitle("Registro Empleado\r\n");
-		setBounds(100, 100, 443, 306);
+		setBounds(100, 100, 443, 336);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
@@ -141,6 +142,17 @@ public class InsertEmployee extends JDialog {
 			txtFechaNac.setColumns(10);
 			txtFechaNac.setBounds(139, 134, 263, 20);
 			contentPanel.add(txtFechaNac);
+		}
+		{
+			JLabel lblZipCode = new JLabel("ZIP Code:");
+			lblZipCode.setBounds(34, 229, 86, 14);
+			contentPanel.add(lblZipCode);
+		}
+		{
+			txtZipCode = new JTextField();
+			txtZipCode.setColumns(10);
+			txtZipCode.setBounds(139, 226, 263, 20);
+			contentPanel.add(txtZipCode);
 		}
 		{
 			JPanel buttonPane = new JPanel();
