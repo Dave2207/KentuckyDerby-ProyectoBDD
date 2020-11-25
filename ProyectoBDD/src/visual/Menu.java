@@ -45,7 +45,7 @@ public class Menu extends JFrame {
 		JMenu mnUsuarios = new JMenu("Registro");
 		menuBar.add(mnUsuarios);
 		
-		JMenuItem mntmInsertarUsuario = new JMenuItem("Insertar Usuario");
+		JMenuItem mntmInsertarUsuario = new JMenuItem("Registrar Empleado");
 		mntmInsertarUsuario.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				InsertEmployee insEmp = new InsertEmployee();
