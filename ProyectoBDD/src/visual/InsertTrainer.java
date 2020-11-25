@@ -10,6 +10,8 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.border.TitledBorder;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class InsertTrainer extends JDialog {
 
@@ -37,14 +39,14 @@ public class InsertTrainer extends JDialog {
 	 */
 	public InsertTrainer() {
 		setTitle("Registro Trainer");
-		setBounds(100, 100, 484, 411);
+		setBounds(100, 100, 429, 248);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
 		contentPanel.setLayout(null);
 		
 		JLabel lblId = new JLabel("ID: ");
-		lblId.setBounds(95, 36, 18, 14);
+		lblId.setBounds(27, 36, 18, 14);
 		contentPanel.add(lblId);
 		
 		txtIdTrainer = new JTextField();
@@ -55,7 +57,7 @@ public class InsertTrainer extends JDialog {
 		txtIdTrainer.setColumns(10);
 		
 		JLabel lblNombre = new JLabel("Nombre:");
-		lblNombre.setBounds(67, 64, 46, 14);
+		lblNombre.setBounds(27, 64, 46, 14);
 		contentPanel.add(lblNombre);
 		
 		txtNombreTrainer = new JTextField();
@@ -64,7 +66,7 @@ public class InsertTrainer extends JDialog {
 		txtNombreTrainer.setColumns(10);
 		
 		JLabel lblApellidos = new JLabel("Apellidos:");
-		lblApellidos.setBounds(67, 89, 46, 14);
+		lblApellidos.setBounds(27, 89, 46, 14);
 		contentPanel.add(lblApellidos);
 		
 		txtApellidoTrainer = new JTextField();
@@ -80,23 +82,23 @@ public class InsertTrainer extends JDialog {
 		txtStateResTrainer.setBounds(123, 117, 263, 20);
 		contentPanel.add(txtStateResTrainer);
 		txtStateResTrainer.setColumns(10);
-		
-		JPanel panel = new JPanel();
-		panel.setBorder(new TitledBorder(null, "Trainers", TitledBorder.LEADING, TitledBorder.TOP, null, null));
-		panel.setBounds(10, 152, 449, 176);
-		contentPanel.add(panel);
 		{
 			JPanel buttonPane = new JPanel();
 			buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
 			getContentPane().add(buttonPane, BorderLayout.SOUTH);
 			{
-				JButton okButton = new JButton("OK");
+				JButton okButton = new JButton("Registrar");
 				okButton.setActionCommand("OK");
 				buttonPane.add(okButton);
 				getRootPane().setDefaultButton(okButton);
 			}
 			{
-				JButton cancelButton = new JButton("Cancel");
+				JButton cancelButton = new JButton("Cancelar");
+				cancelButton.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+						dispose();
+					}
+				});
 				cancelButton.setActionCommand("Cancel");
 				buttonPane.add(cancelButton);
 			}

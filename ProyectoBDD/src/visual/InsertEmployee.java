@@ -7,10 +7,24 @@ import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+import javax.swing.JLabel;
+import javax.swing.JTextField;
+import javax.swing.JRadioButton;
+import javax.swing.JSpinner;
+import javax.swing.border.TitledBorder;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class InsertEmployee extends JDialog {
 
 	private final JPanel contentPanel = new JPanel();
+	private JTextField txtIdEmp;
+	private JTextField txtStateResEmp;
+	private JTextField txtNombreEmp;
+	private JTextField txtApellidoEmp;
+	private JTextField txtPosEmp;
+	private JTextField txtFechaNac;
+	private JSpinner spnEdad;
 
 	/**
 	 * Launch the application.
@@ -29,23 +43,122 @@ public class InsertEmployee extends JDialog {
 	 * Create the dialog.
 	 */
 	public InsertEmployee() {
-		setBounds(100, 100, 450, 300);
+		setTitle("Registro Empleado\r\n");
+		setBounds(100, 100, 443, 306);
 		getContentPane().setLayout(new BorderLayout());
-		contentPanel.setLayout(new FlowLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
+		contentPanel.setLayout(null);
+		{
+			JLabel label = new JLabel("ID:");
+			label.setBounds(34, 21, 46, 14);
+			contentPanel.add(label);
+		}
+		{
+			txtIdEmp = new JTextField();
+			txtIdEmp.setEnabled(false);
+			txtIdEmp.setEditable(false);
+			txtIdEmp.setColumns(10);
+			txtIdEmp.setBounds(139, 18, 86, 20);
+			contentPanel.add(txtIdEmp);
+		}
+		{
+			JLabel label = new JLabel("State Residence:");
+			label.setBounds(34, 165, 86, 14);
+			contentPanel.add(label);
+		}
+		{
+			txtStateResEmp = new JTextField();
+			txtStateResEmp.setColumns(10);
+			txtStateResEmp.setBounds(139, 164, 263, 20);
+			contentPanel.add(txtStateResEmp);
+		}
+		{
+			txtNombreEmp = new JTextField();
+			txtNombreEmp.setColumns(10);
+			txtNombreEmp.setBounds(139, 49, 263, 20);
+			contentPanel.add(txtNombreEmp);
+		}
+		{
+			JLabel label = new JLabel("Nombre:");
+			label.setBounds(34, 52, 46, 14);
+			contentPanel.add(label);
+		}
+		{
+			JLabel label = new JLabel("Apellidos:");
+			label.setBounds(34, 77, 46, 14);
+			contentPanel.add(label);
+		}
+		{
+			txtApellidoEmp = new JTextField();
+			txtApellidoEmp.setColumns(10);
+			txtApellidoEmp.setBounds(139, 74, 263, 20);
+			contentPanel.add(txtApellidoEmp);
+		}
+		{
+			JLabel label = new JLabel("G\u00E9nero:");
+			label.setBounds(34, 105, 52, 14);
+			contentPanel.add(label);
+		}
+		{
+			JRadioButton rdbnGenMasc = new JRadioButton("M");
+			rdbnGenMasc.setBounds(139, 101, 46, 23);
+			contentPanel.add(rdbnGenMasc);
+		}
+		{
+			JRadioButton rdbnGenFem = new JRadioButton("F");
+			rdbnGenFem.setBounds(193, 101, 46, 23);
+			contentPanel.add(rdbnGenFem);
+		}
+		{
+			JLabel lblPosicin = new JLabel("Posici\u00F3n:");
+			lblPosicin.setBounds(34, 196, 86, 14);
+			contentPanel.add(lblPosicin);
+		}
+		{
+			txtPosEmp = new JTextField();
+			txtPosEmp.setColumns(10);
+			txtPosEmp.setBounds(139, 195, 263, 20);
+			contentPanel.add(txtPosEmp);
+		}
+		{
+			JLabel label = new JLabel("Edad:");
+			label.setBounds(276, 109, 46, 14);
+			contentPanel.add(label);
+		}
+		{
+			spnEdad = new JSpinner();
+			spnEdad.setBounds(332, 106, 70, 20);
+			contentPanel.add(spnEdad);
+		}
+		{
+			JLabel label = new JLabel("Fecha Nacimiento:");
+			label.setBounds(34, 139, 101, 14);
+			contentPanel.add(label);
+		}
+		{
+			txtFechaNac = new JTextField();
+			txtFechaNac.setColumns(10);
+			txtFechaNac.setBounds(139, 134, 263, 20);
+			contentPanel.add(txtFechaNac);
+		}
 		{
 			JPanel buttonPane = new JPanel();
 			buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
 			getContentPane().add(buttonPane, BorderLayout.SOUTH);
 			{
-				JButton okButton = new JButton("OK");
+				JButton okButton = new JButton("Registrar");
 				okButton.setActionCommand("OK");
 				buttonPane.add(okButton);
 				getRootPane().setDefaultButton(okButton);
 			}
 			{
-				JButton cancelButton = new JButton("Cancel");
+				JButton cancelButton = new JButton("Cancelar");
+				cancelButton.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+						dispose();
+					}
+				});
 				cancelButton.setActionCommand("Cancel");
 				buttonPane.add(cancelButton);
 			}

@@ -12,6 +12,8 @@ import javax.swing.JTextField;
 import javax.swing.border.TitledBorder;
 import javax.swing.UIManager;
 import java.awt.Color;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class InsertOwner extends JDialog {
 
@@ -39,14 +41,14 @@ public class InsertOwner extends JDialog {
 	 */
 	public InsertOwner() {
 		setTitle("Registro Owner");
-		setBounds(100, 100, 486, 431);
+		setBounds(100, 100, 429, 248);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
 		contentPanel.setLayout(null);
 		{
 			JLabel label = new JLabel("ID: ");
-			label.setBounds(97, 43, 18, 14);
+			label.setBounds(28, 32, 18, 14);
 			contentPanel.add(label);
 		}
 		{
@@ -54,60 +56,59 @@ public class InsertOwner extends JDialog {
 			txtIdOwner.setEnabled(false);
 			txtIdOwner.setEditable(false);
 			txtIdOwner.setColumns(10);
-			txtIdOwner.setBounds(125, 37, 86, 20);
+			txtIdOwner.setBounds(124, 29, 86, 20);
 			contentPanel.add(txtIdOwner);
 		}
 		{
 			JLabel label = new JLabel("Nombre:");
-			label.setBounds(69, 71, 46, 14);
+			label.setBounds(28, 63, 46, 14);
 			contentPanel.add(label);
 		}
 		{
 			txtNombreOwner = new JTextField();
 			txtNombreOwner.setColumns(10);
-			txtNombreOwner.setBounds(125, 68, 186, 20);
+			txtNombreOwner.setBounds(124, 60, 186, 20);
 			contentPanel.add(txtNombreOwner);
 		}
 		{
 			JLabel label = new JLabel("Apellidos:");
-			label.setBounds(69, 96, 46, 14);
+			label.setBounds(28, 88, 46, 14);
 			contentPanel.add(label);
 		}
 		{
 			txtApellidoOwner = new JTextField();
 			txtApellidoOwner.setColumns(10);
-			txtApellidoOwner.setBounds(125, 93, 186, 20);
+			txtApellidoOwner.setBounds(124, 85, 186, 20);
 			contentPanel.add(txtApellidoOwner);
 		}
 		{
 			JLabel label = new JLabel("State Residence:");
-			label.setBounds(29, 127, 86, 14);
+			label.setBounds(28, 119, 86, 14);
 			contentPanel.add(label);
 		}
 		{
 			txtStateResOwner = new JTextField();
 			txtStateResOwner.setColumns(10);
-			txtStateResOwner.setBounds(125, 124, 263, 20);
+			txtStateResOwner.setBounds(124, 116, 263, 20);
 			contentPanel.add(txtStateResOwner);
-		}
-		{
-			JPanel panel = new JPanel();
-			panel.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "Owners", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
-			panel.setBounds(10, 160, 449, 176);
-			contentPanel.add(panel);
 		}
 		{
 			JPanel buttonPane = new JPanel();
 			buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
 			getContentPane().add(buttonPane, BorderLayout.SOUTH);
 			{
-				JButton okButton = new JButton("OK");
+				JButton okButton = new JButton("Registrar");
 				okButton.setActionCommand("OK");
 				buttonPane.add(okButton);
 				getRootPane().setDefaultButton(okButton);
 			}
 			{
-				JButton cancelButton = new JButton("Cancel");
+				JButton cancelButton = new JButton("Cancelar");
+				cancelButton.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+						dispose();
+					}
+				});
 				cancelButton.setActionCommand("Cancel");
 				buttonPane.add(cancelButton);
 			}

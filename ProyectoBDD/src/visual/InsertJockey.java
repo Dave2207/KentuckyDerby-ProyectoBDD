@@ -7,10 +7,22 @@ import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+import javax.swing.JLabel;
+import javax.swing.JTextField;
+import javax.swing.JRadioButton;
+import javax.swing.JSpinner;
+import javax.swing.SpinnerNumberModel;
+import javax.swing.border.TitledBorder;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class InsertJockey extends JDialog {
 
 	private final JPanel contentPanel = new JPanel();
+	private JTextField txtIdJockey;
+	private JTextField txtNombreJockey;
+	private JTextField txtApellidoJockey;
+	private JTextField txtStateResJockey;
 
 	/**
 	 * Launch the application.
@@ -29,27 +41,110 @@ public class InsertJockey extends JDialog {
 	 * Create the dialog.
 	 */
 	public InsertJockey() {
-		setBounds(100, 100, 450, 300);
+		setTitle("Registro Jockey");
+		setBounds(100, 100, 422, 297);
 		getContentPane().setLayout(new BorderLayout());
-		contentPanel.setLayout(new FlowLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
+		contentPanel.setLayout(null);
+		{
+			JLabel lblId = new JLabel("ID:");
+			lblId.setBounds(22, 25, 46, 14);
+			contentPanel.add(lblId);
+		}
+		{
+			txtIdJockey = new JTextField();
+			txtIdJockey.setEditable(false);
+			txtIdJockey.setEnabled(false);
+			txtIdJockey.setBounds(78, 22, 86, 20);
+			contentPanel.add(txtIdJockey);
+			txtIdJockey.setColumns(10);
+		}
+		{
+			JLabel label = new JLabel("Nombre:");
+			label.setBounds(22, 56, 46, 14);
+			contentPanel.add(label);
+		}
+		{
+			txtNombreJockey = new JTextField();
+			txtNombreJockey.setColumns(10);
+			txtNombreJockey.setBounds(78, 53, 312, 20);
+			contentPanel.add(txtNombreJockey);
+		}
+		{
+			JLabel label = new JLabel("Apellidos:");
+			label.setBounds(22, 81, 46, 14);
+			contentPanel.add(label);
+		}
+		{
+			txtApellidoJockey = new JTextField();
+			txtApellidoJockey.setColumns(10);
+			txtApellidoJockey.setBounds(78, 84, 312, 20);
+			contentPanel.add(txtApellidoJockey);
+		}
+		{
+			JLabel label = new JLabel("State Residence:");
+			label.setBounds(22, 183, 86, 14);
+			contentPanel.add(label);
+		}
+		{
+			txtStateResJockey = new JTextField();
+			txtStateResJockey.setColumns(10);
+			txtStateResJockey.setBounds(127, 182, 263, 20);
+			contentPanel.add(txtStateResJockey);
+		}
+		{
+			JLabel lblGnero = new JLabel("G\u00E9nero:");
+			lblGnero.setBounds(225, 124, 52, 14);
+			contentPanel.add(lblGnero);
+		}
+		{
+			JLabel lblNewLabel = new JLabel("Carreras Ganadas:");
+			lblNewLabel.setBounds(22, 129, 98, 14);
+			contentPanel.add(lblNewLabel);
+		}
+		{
+			JLabel lblPeso = new JLabel("Peso (kg):");
+			lblPeso.setBounds(22, 154, 86, 14);
+			contentPanel.add(lblPeso);
+		}
+		
+		JRadioButton rdbtnGenMasc = new JRadioButton("M");
+		rdbtnGenMasc.setBounds(275, 120, 46, 23);
+		contentPanel.add(rdbtnGenMasc);
+		
+		JRadioButton rdbtnGenFem = new JRadioButton("F");
+		rdbtnGenFem.setBounds(323, 120, 46, 23);
+		contentPanel.add(rdbtnGenFem);
+		
+		JSpinner spnWonRaces = new JSpinner();
+		spnWonRaces.setBounds(127, 126, 70, 20);
+		contentPanel.add(spnWonRaces);
+		
+		JSpinner spnWeight = new JSpinner();
+		spnWeight.setModel(new SpinnerNumberModel(new Float(1), new Float(1), new Float(100), new Float(1)));
+		spnWeight.setBounds(127, 151, 70, 20);
+		contentPanel.add(spnWeight);
 		{
 			JPanel buttonPane = new JPanel();
 			buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
 			getContentPane().add(buttonPane, BorderLayout.SOUTH);
 			{
-				JButton okButton = new JButton("OK");
+				JButton okButton = new JButton("Registrar");
 				okButton.setActionCommand("OK");
 				buttonPane.add(okButton);
 				getRootPane().setDefaultButton(okButton);
 			}
 			{
-				JButton cancelButton = new JButton("Cancel");
+				JButton cancelButton = new JButton("Cancelar");
+				cancelButton.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+						dispose();
+					}
+				});
 				cancelButton.setActionCommand("Cancel");
 				buttonPane.add(cancelButton);
 			}
 		}
 	}
-
 }
