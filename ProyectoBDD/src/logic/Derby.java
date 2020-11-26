@@ -84,9 +84,11 @@ public class Derby {
 	}
 	public void registrarOwner(Owner owner) {
 		owners.add(owner);
+		genCodOwner++;
 	}
 	public void eliminarOwner(Owner owner) {
 		owners.remove(owner);
+		genCodOwner--;
 	}
 	public void registrarJockey(Jockey jockey) {
 		jockeys.add(jockey);
