@@ -8,11 +8,16 @@ import javax.swing.JDialog;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.JRadioButton;
 import javax.swing.JSpinner;
 import javax.swing.SpinnerNumberModel;
 import javax.swing.border.TitledBorder;
+
+import logic.Derby;
+import logic.Jockey;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
@@ -23,6 +28,11 @@ public class InsertJockey extends JDialog {
 	private JTextField txtNombreJockey;
 	private JTextField txtApellidoJockey;
 	private JTextField txtStateResJockey;
+	private JRadioButton rdbtnGenMasc;
+	private JRadioButton rdbtnGenFem;
+	private JSpinner spnWonRaces;
+	private JSpinner spnWeight;
+	private JSpinner spnEdad;
 
 	/**
 	 * Launch the application.
@@ -61,6 +71,7 @@ public class InsertJockey extends JDialog {
 			txtIdJockey.setBounds(88, 22, 86, 20);
 			contentPanel.add(txtIdJockey);
 			txtIdJockey.setColumns(10);
+			txtIdJockey.setText(Integer.valueOf(Derby.getGenCodJockey()).toString());
 		}
 		{
 			JLabel label = new JLabel("Nombre:");
@@ -111,28 +122,71 @@ public class InsertJockey extends JDialog {
 			contentPanel.add(lblPeso);
 		}
 		
-		JRadioButton rdbtnGenMasc = new JRadioButton("M");
+		rdbtnGenMasc = new JRadioButton("M");
+		rdbtnGenMasc.setSelected(true);
+		rdbtnGenMasc.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if(rdbtnGenMasc.isSelected()) {
+					rdbtnGenMasc.setSelected(true);
+					rdbtnGenFem.setSelected(false);
+				}
+			}
+		});
 		rdbtnGenMasc.setBounds(293, 123, 46, 23);
 		contentPanel.add(rdbtnGenMasc);
 		
-		JRadioButton rdbtnGenFem = new JRadioButton("F");
+		rdbtnGenFem = new JRadioButton("F");
+		rdbtnGenFem.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if(rdbtnGenFem.isSelected()) {
+					rdbtnGenMasc.setSelected(false);
+					rdbtnGenFem.setSelected(true);
+				}
+			}
+		});
 		rdbtnGenFem.setBounds(341, 123, 46, 23);
 		contentPanel.add(rdbtnGenFem);
 		
-		JSpinner spnWonRaces = new JSpinner();
+		spnWonRaces = new JSpinner();
+		spnWonRaces.setModel(new SpinnerNumberModel(new Integer(0), new Integer(0), null, new Integer(1)));
 		spnWonRaces.setBounds(137, 126, 70, 20);
 		contentPanel.add(spnWonRaces);
 		
-		JSpinner spnWeight = new JSpinner();
-		spnWeight.setModel(new SpinnerNumberModel(new Float(1), new Float(1), new Float(100), new Float(1)));
+		spnWeight = new JSpinner();
+		spnWeight.setModel(new SpinnerNumberModel(1, 1, 100, 1));
 		spnWeight.setBounds(137, 151, 70, 20);
 		contentPanel.add(spnWeight);
+		
+		JLabel lblEdad = new JLabel("Edad: ");
+		lblEdad.setBounds(243, 155, 46, 13);
+		contentPanel.add(lblEdad);
+		
+		spnEdad = new JSpinner();
+		spnEdad.setModel(new SpinnerNumberModel(new Integer(0), new Integer(0), null, new Integer(1)));
+		spnEdad.setBounds(293, 151, 46, 20);
+		contentPanel.add(spnEdad);
 		{
 			JPanel buttonPane = new JPanel();
 			buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
 			getContentPane().add(buttonPane, BorderLayout.SOUTH);
 			{
 				JButton okButton = new JButton("Registrar");
+				okButton.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+						if(rdbtnGenMasc.isSelected()) {
+							Jockey jockey = new Jockey(Integer.parseInt(txtIdJockey.getText()), txtNombreJockey.getText(), txtApellidoJockey.getText(), "M", txtStateResJockey.getText(), (int) spnWonRaces.getValue(), (int) spnEdad.getValue(), (int) spnWeight.getValue());
+							Derby.getInstance().registrarJockey(jockey);
+							JOptionPane.showMessageDialog(null, "Operacion Satisfactoria", "Notificacion", JOptionPane.INFORMATION_MESSAGE);
+							clean();
+						}
+						if(rdbtnGenFem.isSelected()) {
+							Jockey jockey = new Jockey(Integer.parseInt(txtIdJockey.getText()), txtNombreJockey.getText(), txtApellidoJockey.getText(), "F", txtStateResJockey.getText(), (int) spnWonRaces.getValue(), (int) spnEdad.getValue(), (int) spnWeight.getValue());
+							Derby.getInstance().registrarJockey(jockey);
+							JOptionPane.showMessageDialog(null, "Operacion Satisfactoria", "Notificacion", JOptionPane.INFORMATION_MESSAGE);
+							clean();
+						}
+					}
+				});
 				okButton.setActionCommand("OK");
 				buttonPane.add(okButton);
 				getRootPane().setDefaultButton(okButton);
@@ -148,5 +202,14 @@ public class InsertJockey extends JDialog {
 				buttonPane.add(cancelButton);
 			}
 		}
+	}
+	public void clean() {
+		txtIdJockey.setText(Integer.valueOf(Derby.getGenCodJockey()).toString());
+		txtNombreJockey.setText("");
+		txtApellidoJockey.setText("");
+		txtStateResJockey.setText("");
+		spnEdad.setValue(0);
+		spnWeight.setValue(1);
+		spnWonRaces.setValue(0);
 	}
 }

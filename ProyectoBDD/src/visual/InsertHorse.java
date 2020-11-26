@@ -121,6 +121,7 @@ public class InsertHorse extends JDialog {
 		}
 		{
 			rdbnGenMasc = new JRadioButton("M");
+			rdbnGenMasc.setSelected(true);
 			rdbnGenMasc.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					rdbnGenMasc.setSelected(true);
@@ -173,13 +174,15 @@ public class InsertHorse extends JDialog {
 							Horse horse = new Horse(txtNombreHorse.getText(), txtEstablo.getText(), "M", (int) spnEdad.getValue(), txtGear.getText(), (int) spnScore.getValue(), (int) spnWonRaces.getValue(), cbxBreed.getSelectedItem().toString());
 							Derby.getInstance().registrarCaballo(horse);
 							JOptionPane.showMessageDialog(null, "Operacion Satisfactoria", "Notificacion", JOptionPane.INFORMATION_MESSAGE);
-							System.out.println(Derby.getInstance().getHorses().get(0).getHorseName());
+							clean();
+							//System.out.println(Derby.getInstance().getHorses().get(0).getHorseName());
 						}
 						if(rdbnGenFem.isSelected()) {
 							Horse horse = new Horse(txtNombreHorse.getText(), txtEstablo.getText(), "F", (int) spnEdad.getValue(), txtGear.getText(), (int) spnScore.getValue(), (int) spnWonRaces.getValue(), cbxBreed.getSelectedItem().toString());
 							Derby.getInstance().registrarCaballo(horse);
 							JOptionPane.showMessageDialog(null, "Operacion Satisfactoria", "Notificacion", JOptionPane.INFORMATION_MESSAGE);
-							System.out.println(Derby.getInstance().getHorses().get(0).getHorseName());
+							clean();
+							//System.out.println(Derby.getInstance().getHorses().get(0).getHorseName());
 						}
 					}
 				});
@@ -196,5 +199,14 @@ public class InsertHorse extends JDialog {
 				buttonPane.add(cancelButton);
 			}
 		}
+	}
+	public void clean() {
+		txtNombreHorse.setText("");
+		txtGear.setText("");
+		txtEstablo.setText("");
+		spnEdad.setValue(0);
+		spnScore.setValue(0);
+		spnWonRaces.setValue(0);
+		cbxBreed.setSelectedIndex(-1);
 	}
 }

@@ -8,6 +8,8 @@ public class Derby {
 	private ArrayList<Jockey> jockeys;
 	private ArrayList<Owner> owners;
 	private ArrayList<Trainer> trainers;
+	private static int genCodEmp = 1;
+	private static int genCodJockey = 1;
 	private static Derby derb = null;
 	
 	private Derby() {
@@ -83,5 +85,29 @@ public class Derby {
 	}
 	public void eliminarOwner(Owner owner) {
 		owners.remove(owner);
+	}
+	public void registrarJockey(Jockey jockey) {
+		jockeys.add(jockey);
+		genCodJockey++;
+	}
+	public void eliminarJockey(Jockey jockey) {
+		jockeys.remove(jockey);
+		genCodJockey--;
+	}
+
+	public static int getGenCodJockey() {
+		return genCodJockey;
+	}
+
+	public static void setGenCodJockey(int genCodJockey) {
+		Derby.genCodJockey = genCodJockey;
+	}
+
+	public static int getGenCodEmp() {
+		return genCodEmp;
+	}
+
+	public static void setGenCodEmp(int genCodEmp) {
+		Derby.genCodEmp = genCodEmp;
 	}
 }

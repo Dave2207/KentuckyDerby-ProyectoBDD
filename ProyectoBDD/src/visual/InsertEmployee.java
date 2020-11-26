@@ -66,9 +66,12 @@ public class InsertEmployee extends JDialog {
 		}
 		{
 			txtIdEmp = new JTextField();
+			txtIdEmp.setEditable(false);
+			txtIdEmp.setEnabled(false);
 			txtIdEmp.setColumns(10);
 			txtIdEmp.setBounds(149, 18, 86, 20);
 			contentPanel.add(txtIdEmp);
+			txtIdEmp.setText(Integer.valueOf(Derby.getGenCodEmp()).toString());
 		}
 		{
 			JLabel label = new JLabel("State Residence:");
@@ -110,6 +113,7 @@ public class InsertEmployee extends JDialog {
 		}
 		{
 			rdbnGenMasc = new JRadioButton("M");
+			rdbnGenMasc.setSelected(true);
 			rdbnGenMasc.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					rdbnGenMasc.setSelected(true);
@@ -208,6 +212,16 @@ public class InsertEmployee extends JDialog {
 				buttonPane.add(cancelButton);
 			}
 		}
+	}
+	public void clean() {
+		txtIdEmp.setText(Integer.valueOf(Derby.getGenCodEmp()).toString());
+		txtNombreEmp.setText("");
+		txtApellidoEmp.setText("");
+		txtFechaNac.setText("");
+		txtStateResEmp.setText("");
+		txtZipCode.setText("");
+		txtPosEmp.setText("");
+		spnEdad.setValue(0);
 	}
 
 }
