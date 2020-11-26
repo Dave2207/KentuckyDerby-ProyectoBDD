@@ -20,6 +20,8 @@ import logic.Horse;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.JComboBox;
+import javax.swing.DefaultComboBoxModel;
 
 public class InsertHorse extends JDialog {
 
@@ -27,9 +29,12 @@ public class InsertHorse extends JDialog {
 	private JTextField txtGear;
 	private JTextField txtNombreHorse;
 	private JTextField txtEstablo;
-	private JTextField txtBreed;
 	private JRadioButton rdbnGenMasc;
 	private JRadioButton rdbnGenFem;
+	private JSpinner spnScore;
+	private JSpinner spnEdad;
+	private JSpinner spnWonRaces;
+	private JComboBox cbxBreed;
 
 	/**
 	 * Launch the application.
@@ -48,6 +53,7 @@ public class InsertHorse extends JDialog {
 	 * Create the dialog.
 	 */
 	public InsertHorse() {
+		setResizable(false);
 		setTitle("Registro Horse");
 		setBounds(100, 100, 424, 289);
 		getContentPane().setLayout(new BorderLayout());
@@ -83,7 +89,7 @@ public class InsertHorse extends JDialog {
 			contentPanel.add(lblEdad);
 		}
 		{
-			JSpinner spnEdad = new JSpinner();
+			spnEdad = new JSpinner();
 			spnEdad.setBounds(78, 136, 70, 20);
 			contentPanel.add(spnEdad);
 		}
@@ -104,7 +110,7 @@ public class InsertHorse extends JDialog {
 			contentPanel.add(lblScore);
 		}
 		{
-			JSpinner spnScore = new JSpinner();
+			spnScore = new JSpinner();
 			spnScore.setBounds(320, 138, 70, 20);
 			contentPanel.add(spnScore);
 		}
@@ -141,7 +147,7 @@ public class InsertHorse extends JDialog {
 			contentPanel.add(label);
 		}
 		{
-			JSpinner spnWonRaces = new JSpinner();
+			spnWonRaces = new JSpinner();
 			spnWonRaces.setBounds(320, 167, 70, 20);
 			contentPanel.add(spnWonRaces);
 		}
@@ -150,12 +156,11 @@ public class InsertHorse extends JDialog {
 			lblRaza.setBounds(22, 85, 46, 14);
 			contentPanel.add(lblRaza);
 		}
-		{
-			txtBreed = new JTextField();
-			txtBreed.setColumns(10);
-			txtBreed.setBounds(78, 82, 186, 20);
-			contentPanel.add(txtBreed);
-		}
+		
+		cbxBreed = new JComboBox();
+		cbxBreed.setModel(new DefaultComboBoxModel(new String[] {"<Seleccione la raza>", "Arabian", "Morgan", "Mustang", "Standardbred", "Thoroughbred"}));
+		cbxBreed.setBounds(78, 84, 186, 21);
+		contentPanel.add(cbxBreed);
 		{
 	   JPanel buttonPane = new JPanel();
 			buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
@@ -164,18 +169,21 @@ public class InsertHorse extends JDialog {
 				JButton okButton = new JButton("Registrar");
 				okButton.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
-						/*if(rdbnGenMasc.isSelected()) {
-							Horse horse = new Horse(txtNombreHorse.getText(), txtGear.getText(),));
-							Derby.getInstance().registrarEmpleado(emp);
+						if(rdbnGenMasc.isSelected()) {
+							Horse horse = new Horse(txtNombreHorse.getText(), txtEstablo.getText(), "M", (int) spnEdad.getValue(), txtGear.getText(), (int) spnScore.getValue(), (int) spnWonRaces.getValue(), cbxBreed.getSelectedItem().toString());
+							Derby.getInstance().registrarCaballo(horse);
 							JOptionPane.showMessageDialog(null, "Operacion Satisfactoria", "Notificacion", JOptionPane.INFORMATION_MESSAGE);
+							System.out.println(Derby.getInstance().getHorses().get(0).getHorseName());
 						}
 						if(rdbnGenFem.isSelected()) {
-							Employee emp = new Employee(Integer.parseInt(txtIdEmp.getText()), txtNombreEmp.getText(), txtApellidoEmp.getText(), Integer.parseInt(spnEdad.getValue().toString()), txtFechaNac.getText(), "F", txtPosEmp.getText(), Integer.parseInt(txtZipCode.getText()));
-							Derby.getInstance().registrarEmpleado(emp);
+							Horse horse = new Horse(txtNombreHorse.getText(), txtEstablo.getText(), "F", (int) spnEdad.getValue(), txtGear.getText(), (int) spnScore.getValue(), (int) spnWonRaces.getValue(), cbxBreed.getSelectedItem().toString());
+							Derby.getInstance().registrarCaballo(horse);
 							JOptionPane.showMessageDialog(null, "Operacion Satisfactoria", "Notificacion", JOptionPane.INFORMATION_MESSAGE);
-						}*/
+							System.out.println(Derby.getInstance().getHorses().get(0).getHorseName());
+						}
 					}
 				});
+				buttonPane.add(okButton);
 				}
 			{
 				JButton cancelButton = new JButton("Cancelar");
@@ -189,5 +197,4 @@ public class InsertHorse extends JDialog {
 			}
 		}
 	}
-
 }
