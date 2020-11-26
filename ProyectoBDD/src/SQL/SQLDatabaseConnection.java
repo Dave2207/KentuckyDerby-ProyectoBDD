@@ -72,4 +72,130 @@ public class SQLDatabaseConnection {
 		}
 		
 	}
+//
+	public static void registrarCaballoSQL(
+			String HorseName,
+			String Establo,
+			String Gender,
+			int Age,
+			String Gear,
+			int Score,
+			int WonRaces,
+			String Breed) {
+		String nombre = HorseName;
+		String establo = Establo;
+		String gen = Gender;
+		int edad = Age;
+		String gear = Gear;
+		int score = Score;
+		int won_races = WonRaces;
+		String breed = Breed;
+		
+		
+		
+		Connection con = null;
+		
+		try {
+			String dbURL = "jdbc:sqlserver://localhost";
+			String user = "DavidV";
+			String pass = "2271999";
+			con = DriverManager.getConnection(dbURL, user, pass);
+			if(con != null) {
+				System.out.println("Conexion establecida");
+			}
+			
+			try (Statement stmt = con.createStatement()){
+				String sqlQuery = "INSERT INTO Horse ([horseName],Establo,Genero,Edad,Gear,Score,CarrerasGanadas,Raza)"+" VALUES(?,?,?,?,?,?,?,?)";
+				PreparedStatement prepStmt = con.prepareStatement(sqlQuery);
+				prepStmt.setString(1, nombre);
+				prepStmt.setString(2, establo);
+				prepStmt.setString(3, gen);
+				prepStmt.setInt(4, edad);
+				prepStmt.setString(5, gear);
+				prepStmt.setInt(6, score);
+				prepStmt.setInt(7, won_races);
+				prepStmt.setString(8, breed);
+				prepStmt.executeUpdate();
+				prepStmt.close();
+			} catch(SQLException e) {
+				e.printStackTrace();
+			}
+		} catch(SQLException ex) {
+			ex.printStackTrace();
+		}
+		finally {
+			try {
+				if(con != null && !con.isClosed()) {
+					con.close();
+				}
+			} catch (SQLException ex) {
+				ex.printStackTrace();
+			}
+		}
+		
+	}
+//
+	public static void registrarJineteSQL(
+			int JockeyID,
+			String FirstName,
+			String LastName,
+			String Gender,
+			String StateResidence,
+			int WonRaces,
+			int YearsOfExp,
+			int JockeyWeight) {
+		int id = JockeyID;
+		String nombre = FirstName;
+		String apellido = LastName;
+		String gen = Gender;
+		String stateR = StateResidence;
+		int wonRaces = WonRaces;
+		int years = YearsOfExp;
+		int weight = JockeyWeight;
+		
+		
+		
+		Connection con = null;
+		
+		try {
+			String dbURL = "jdbc:sqlserver://localhost";
+			String user = "DavidV";
+			String pass = "2271999";
+			con = DriverManager.getConnection(dbURL, user, pass);
+			if(con != null) {
+				System.out.println("Conexion establecida");
+			}
+			
+			try (Statement stmt = con.createStatement()){
+				String sqlQuery = "INSERT INTO Jockey ([JockeyID],FirstName,LastName,Genero,StateResidence,CarrerasGanadas,Experiencia,Peso)"+" VALUES(?,?,?,?,?,?,?,?)";
+				PreparedStatement prepStmt = con.prepareStatement(sqlQuery);
+				prepStmt.setInt(1, id);
+				prepStmt.setString(2, nombre);
+				prepStmt.setString(3, apellido);
+				prepStmt.setString(4, gen);
+				prepStmt.setString(5, stateR);
+				prepStmt.setInt(6, wonRaces);
+				prepStmt.setInt(7, years);
+				prepStmt.setInt(8, weight);
+				prepStmt.executeUpdate();
+				prepStmt.close();
+			} catch(SQLException e) {
+				e.printStackTrace();
+			}
+		} catch(SQLException ex) {
+			ex.printStackTrace();
+		}
+		finally {
+			try {
+				if(con != null && !con.isClosed()) {
+					con.close();
+				}
+			} catch (SQLException ex) {
+				ex.printStackTrace();
+			}
+		}
+		
+	}
+//
+	
 }
