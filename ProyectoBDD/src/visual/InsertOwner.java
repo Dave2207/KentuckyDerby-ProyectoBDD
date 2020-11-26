@@ -8,12 +8,23 @@ import javax.swing.JDialog;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.border.TitledBorder;
+import javax.swing.table.DefaultTableModel;
+
+import logic.Derby;
+import logic.Horse;
+import logic.Owner;
+
 import javax.swing.UIManager;
 import java.awt.Color;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.awt.event.ActionEvent;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
 
 public class InsertOwner extends JDialog {
 
@@ -42,7 +53,7 @@ public class InsertOwner extends JDialog {
 	public InsertOwner() {
 		setResizable(false);
 		setTitle("Registro Owner");
-		setBounds(100, 100, 429, 248);
+		setBounds(100, 100, 429, 221);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
@@ -60,6 +71,7 @@ public class InsertOwner extends JDialog {
 			txtIdOwner.setColumns(10);
 			txtIdOwner.setBounds(134, 29, 86, 20);
 			contentPanel.add(txtIdOwner);
+			txtIdOwner.setText(Integer.valueOf(Derby.getGenCodOwner()).toString());
 		}
 		{
 			JLabel label = new JLabel("Nombre:");
@@ -99,10 +111,18 @@ public class InsertOwner extends JDialog {
 			buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
 			getContentPane().add(buttonPane, BorderLayout.SOUTH);
 			{
-				JButton okButton = new JButton("Registrar");
-				okButton.setActionCommand("OK");
-				buttonPane.add(okButton);
-				getRootPane().setDefaultButton(okButton);
+				JButton btnRegistrar = new JButton("Registrar");
+				btnRegistrar.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+						Owner own = new Owner(Integer.parseInt(txtIdOwner.getText()), txtNombreOwner.getText(), txtApellidoOwner.getText(), txtStateResOwner.getText());
+						Derby.getInstance().registrarOwner(own);
+						JOptionPane.showMessageDialog(null, "Operacion Satisfactoria", "Notificacion", JOptionPane.INFORMATION_MESSAGE);
+						clean();
+					}
+				});
+				btnRegistrar.setActionCommand("OK");
+				buttonPane.add(btnRegistrar);
+				getRootPane().setDefaultButton(btnRegistrar);
 			}
 			{
 				JButton cancelButton = new JButton("Cancelar");
@@ -116,5 +136,11 @@ public class InsertOwner extends JDialog {
 			}
 		}
 	}
-
+	public void clean() {
+		txtIdOwner.setText(Integer.valueOf(Derby.getGenCodOwner()).toString());
+		txtNombreOwner.setText("");
+		txtApellidoOwner.setText("");
+		txtStateResOwner.setText("");
+	}
+	
 }

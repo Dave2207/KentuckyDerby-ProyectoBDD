@@ -8,8 +8,13 @@ import javax.swing.JDialog;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.border.TitledBorder;
+
+import logic.Derby;
+import logic.Trainer;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
@@ -57,6 +62,7 @@ public class InsertTrainer extends JDialog {
 		txtIdTrainer.setBounds(133, 30, 86, 20);
 		contentPanel.add(txtIdTrainer);
 		txtIdTrainer.setColumns(10);
+		txtIdTrainer.setText(Integer.valueOf(Derby.getGenCodTrainer()).toString());
 		
 		JLabel lblNombre = new JLabel("Nombre:");
 		lblNombre.setBounds(27, 64, 86, 14);
@@ -90,6 +96,14 @@ public class InsertTrainer extends JDialog {
 			getContentPane().add(buttonPane, BorderLayout.SOUTH);
 			{
 				JButton okButton = new JButton("Registrar");
+				okButton.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+						Trainer tra = new Trainer(Integer.parseInt(txtIdTrainer.getText()), txtNombreTrainer.getText(), txtApellidoTrainer.getText(), txtStateResTrainer.getText());
+						Derby.getInstance().registrarTrainer(tra);
+						JOptionPane.showMessageDialog(null, "Operacion Satisfactoria", "Notificacion", JOptionPane.INFORMATION_MESSAGE);
+						clean();
+					}
+				});
 				okButton.setActionCommand("OK");
 				buttonPane.add(okButton);
 				getRootPane().setDefaultButton(okButton);
@@ -105,5 +119,11 @@ public class InsertTrainer extends JDialog {
 				buttonPane.add(cancelButton);
 			}
 		}
+	}
+	public void clean() {
+		txtIdTrainer.setText(Integer.valueOf(Derby.getGenCodTrainer()).toString());
+		txtNombreTrainer.setText("");
+		txtApellidoTrainer.setText("");
+		txtStateResTrainer.setText("");
 	}
 }
