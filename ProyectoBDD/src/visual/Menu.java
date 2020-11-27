@@ -96,6 +96,19 @@ public class Menu extends JFrame {
 			}
 		});
 		mnUsuarios.add(mntmRegistrarDueo);
+		
+		JMenu mnListas = new JMenu("Listas");
+		menuBar.add(mnListas);
+		
+		JMenuItem mntmEmpleados = new JMenuItem("Empleados");
+		mntmEmpleados.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ListaEmpleados listE = new ListaEmpleados();
+				listE.setModal(true);
+				listE.setVisible(true);
+			}
+		});
+		mnListas.add(mntmEmpleados);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(new BorderLayout(0, 0));
