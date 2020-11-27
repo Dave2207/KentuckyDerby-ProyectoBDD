@@ -72,9 +72,11 @@ public class Derby {
 	
 	public void registrarEmpleado(Employee employee) {
 		employees.add(employee);
+		genCodEmp++;
 	}
 	public void eliminarEmpleado(Employee employee) {
 		employees.remove(employee);
+		genCodEmp--;
 	}
 	public void registrarCaballo(Horse horse) {
 		horses.add(horse);

@@ -189,11 +189,13 @@ public class InsertEmployee extends JDialog {
 							Employee emp = new Employee(Integer.parseInt(txtIdEmp.getText()), txtNombreEmp.getText(), txtApellidoEmp.getText(), Integer.parseInt(spnEdad.getValue().toString()), txtFechaNac.getText(), "M", txtPosEmp.getText(), Integer.parseInt(txtZipCode.getText()));
 							Derby.getInstance().registrarEmpleado(emp);
 							JOptionPane.showMessageDialog(null, "Operacion Satisfactoria", "Notificacion", JOptionPane.INFORMATION_MESSAGE);
+							clean();
 						}
 						if(rdbnGenFem.isSelected()) {
 							Employee emp = new Employee(Integer.parseInt(txtIdEmp.getText()), txtNombreEmp.getText(), txtApellidoEmp.getText(), Integer.parseInt(spnEdad.getValue().toString()), txtFechaNac.getText(), "F", txtPosEmp.getText(), Integer.parseInt(txtZipCode.getText()));
 							Derby.getInstance().registrarEmpleado(emp);
 							JOptionPane.showMessageDialog(null, "Operacion Satisfactoria", "Notificacion", JOptionPane.INFORMATION_MESSAGE);
+							clean();
 						}
 					}
 				});
