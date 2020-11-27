@@ -19,6 +19,8 @@ import logic.Employee;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.JComboBox;
+import javax.swing.DefaultComboBoxModel;
 
 public class InsertEmployee extends JDialog {
 
@@ -27,7 +29,6 @@ public class InsertEmployee extends JDialog {
 	private JTextField txtStateResEmp;
 	private JTextField txtNombreEmp;
 	private JTextField txtApellidoEmp;
-	private JTextField txtPosEmp;
 	private JTextField txtFechaNac;
 	private JSpinner spnEdad;
 	private JTextField txtZipCode;
@@ -140,12 +141,6 @@ public class InsertEmployee extends JDialog {
 			contentPanel.add(lblPosicin);
 		}
 		{
-			txtPosEmp = new JTextField();
-			txtPosEmp.setColumns(10);
-			txtPosEmp.setBounds(149, 195, 263, 20);
-			contentPanel.add(txtPosEmp);
-		}
-		{
 			JLabel label = new JLabel("Edad:");
 			label.setBounds(290, 105, 46, 14);
 			contentPanel.add(label);
@@ -177,6 +172,11 @@ public class InsertEmployee extends JDialog {
 			txtZipCode.setBounds(149, 226, 263, 20);
 			contentPanel.add(txtZipCode);
 		}
+		
+		JComboBox comboBox = new JComboBox();
+		comboBox.setModel(new DefaultComboBoxModel(new String[] {"Veterinario Equino", "Manager", "Cuidador de Caballos", "Taquillero", "Fot\u00F3grafo Ecuestre"}));
+		comboBox.setBounds(149, 195, 263, 20);
+		contentPanel.add(comboBox);
 		{
 			JPanel buttonPane = new JPanel();
 			buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
@@ -225,5 +225,4 @@ public class InsertEmployee extends JDialog {
 		txtPosEmp.setText("");
 		spnEdad.setValue(0);
 	}
-
 }
