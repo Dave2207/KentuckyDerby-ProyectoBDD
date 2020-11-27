@@ -34,6 +34,7 @@ public class InsertEmployee extends JDialog {
 	private JTextField txtZipCode;
 	private JRadioButton rdbnGenMasc;
 	private JRadioButton rdbnGenFem;
+	private JComboBox cbxPos;
 
 	/**
 	 * Launch the application.
@@ -173,10 +174,10 @@ public class InsertEmployee extends JDialog {
 			contentPanel.add(txtZipCode);
 		}
 		
-		JComboBox comboBox = new JComboBox();
-		comboBox.setModel(new DefaultComboBoxModel(new String[] {"Veterinario Equino", "Manager", "Cuidador de Caballos", "Taquillero", "Fot\u00F3grafo Ecuestre"}));
-		comboBox.setBounds(149, 195, 263, 20);
-		contentPanel.add(comboBox);
+		cbxPos = new JComboBox();
+		cbxPos.setModel(new DefaultComboBoxModel(new String[] {"<Seleccione la posicion>", "Veterinario Equino", "Manager", "Cuidador de Caballos", "Taquillero", "Fot\u00F3grafo Ecuestre"}));
+		cbxPos.setBounds(149, 195, 263, 20);
+		contentPanel.add(cbxPos);
 		{
 			JPanel buttonPane = new JPanel();
 			buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
@@ -186,13 +187,13 @@ public class InsertEmployee extends JDialog {
 				okButton.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
 						if(rdbnGenMasc.isSelected()) {
-							Employee emp = new Employee(Integer.parseInt(txtIdEmp.getText()), txtNombreEmp.getText(), txtApellidoEmp.getText(), Integer.parseInt(spnEdad.getValue().toString()), txtFechaNac.getText(), "M", txtPosEmp.getText(), Integer.parseInt(txtZipCode.getText()));
+							Employee emp = new Employee(Integer.parseInt(txtIdEmp.getText()), txtNombreEmp.getText(), txtApellidoEmp.getText(), Integer.parseInt(spnEdad.getValue().toString()), txtFechaNac.getText(), "M", cbxPos.getSelectedItem().toString(), Integer.parseInt(txtZipCode.getText()));
 							Derby.getInstance().registrarEmpleado(emp);
 							JOptionPane.showMessageDialog(null, "Operacion Satisfactoria", "Notificacion", JOptionPane.INFORMATION_MESSAGE);
 							clean();
 						}
 						if(rdbnGenFem.isSelected()) {
-							Employee emp = new Employee(Integer.parseInt(txtIdEmp.getText()), txtNombreEmp.getText(), txtApellidoEmp.getText(), Integer.parseInt(spnEdad.getValue().toString()), txtFechaNac.getText(), "F", txtPosEmp.getText(), Integer.parseInt(txtZipCode.getText()));
+							Employee emp = new Employee(Integer.parseInt(txtIdEmp.getText()), txtNombreEmp.getText(), txtApellidoEmp.getText(), Integer.parseInt(spnEdad.getValue().toString()), txtFechaNac.getText(), "F", cbxPos.getSelectedItem().toString(), Integer.parseInt(txtZipCode.getText()));
 							Derby.getInstance().registrarEmpleado(emp);
 							JOptionPane.showMessageDialog(null, "Operacion Satisfactoria", "Notificacion", JOptionPane.INFORMATION_MESSAGE);
 							clean();
@@ -222,7 +223,7 @@ public class InsertEmployee extends JDialog {
 		txtFechaNac.setText("");
 		txtStateResEmp.setText("");
 		txtZipCode.setText("");
-		txtPosEmp.setText("");
+		cbxPos.setSelectedIndex(-1);
 		spnEdad.setValue(0);
 	}
 }
