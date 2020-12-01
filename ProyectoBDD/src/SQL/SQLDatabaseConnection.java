@@ -411,7 +411,7 @@ public class SQLDatabaseConnection {
 		}
 		
 	}
-// 
+
 	public static void registrarEspectadorSQL(
 			int TicketNo,
 			int BetAmount,
@@ -457,7 +457,7 @@ public class SQLDatabaseConnection {
 		}
 		
 	}
-//
+
 	public static void registrarTicketSQL(
 			int Code,
 			String PaymentMode,
