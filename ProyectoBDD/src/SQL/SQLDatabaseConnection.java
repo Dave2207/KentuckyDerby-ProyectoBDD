@@ -316,5 +316,92 @@ public class SQLDatabaseConnection {
 				e.printStackTrace();
 			}			
 	}
-	
+//
+	public static void EliminarCaballoSQL ( String PK_Horse) {
+		String caballo = PK_Horse; 
+		
+		
+			String dbURL = "jdbc:sqlserver://localhost;integratedSecurity=true;databaseName=ProyectoBDD";
+			String user = "DavidV";
+			String pass = "2271999";
+			
+			String sql = "DELETE FROM Horse WHERE HorseName =? ";
+		
+			try (Connection con = DriverManager.getConnection(dbURL, user, pass);
+					PreparedStatement stmt = con.prepareStatement(sql)) {
+				
+				stmt.setString(1, caballo);
+				stmt.executeUpdate();
+				
+				System.out.println("Eliminado correctamente");
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}			
+	}
+//
+	public static void EliminarJineteSQL ( int PK_Jockey) {
+		int jinete = PK_Jockey; 
+		
+		
+			String dbURL = "jdbc:sqlserver://localhost;integratedSecurity=true;databaseName=ProyectoBDD";
+			String user = "DavidV";
+			String pass = "2271999";
+			
+			String sql = "DELETE FROM Employee WHERE ID =? ";
+		
+			try (Connection con = DriverManager.getConnection(dbURL, user, pass);
+					PreparedStatement stmt = con.prepareStatement(sql)) {
+				
+				stmt.setInt(1, jinete);
+				stmt.executeUpdate();
+				
+				System.out.println("Eliminado correctamente");
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}			
+	}
+//
+	public static void EliminarDuenoSQL ( int PK_Owner) {
+		int dueno = PK_Owner; 
+		
+		
+			String dbURL = "jdbc:sqlserver://localhost;integratedSecurity=true;databaseName=ProyectoBDD";
+			String user = "DavidV";
+			String pass = "2271999";
+			
+			String sql = "DELETE FROM OwnerHorse WHERE OwnerID =? ";
+		
+			try (Connection con = DriverManager.getConnection(dbURL, user, pass);
+					PreparedStatement stmt = con.prepareStatement(sql)) {
+				
+				stmt.setInt(1, dueno);
+				stmt.executeUpdate();
+				
+				System.out.println("Eliminado correctamente");
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}			
+	}
+//
+	public static void EliminarEntrenadorSQL ( int PK_Trainer) {
+		int entrenador = PK_Trainer; 
+		
+		
+			String dbURL = "jdbc:sqlserver://localhost;integratedSecurity=true;databaseName=ProyectoBDD";
+			String user = "DavidV";
+			String pass = "2271999";
+			
+			String sql = "DELETE FROM Trainer WHERE TrainerID =? ";
+		
+			try (Connection con = DriverManager.getConnection(dbURL, user, pass);
+					PreparedStatement stmt = con.prepareStatement(sql)) {
+				
+				stmt.setInt(1, entrenador);
+				stmt.executeUpdate();
+				
+				System.out.println("Eliminado correctamente");
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}			
+	}
 }
