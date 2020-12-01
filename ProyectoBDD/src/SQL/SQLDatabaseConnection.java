@@ -292,6 +292,236 @@ public class SQLDatabaseConnection {
 		}
 		
 	}
+//
+	public static void registrarCarreraSQL(
+//			int RaceID,
+			int Distance,
+			String RaceType,
+			String RaceTime,
+			String RaceDate,
+			String Weather) {
+//		int id = RaceID;
+		int distance = Distance;
+		String raceType = RaceType;
+		String time = RaceTime;
+		String date = RaceDate;
+		String weather = Weather;
+		
+		
+		Connection con = null;
+		
+		try {
+			String dbURL = "jdbc:sqlserver://localhost;integratedSecurity=true;databaseName=ProyectoBDD";
+			String user = "DavidV";
+			String pass = "2271999";
+			con = DriverManager.getConnection(dbURL, user, pass);
+			if(con != null) {
+				System.out.println("Conexion establecida");
+			}
+			
+			try (Statement stmt = con.createStatement()){
+				String sqlQuery = "INSERT INTO Race (Distance,RaceType,RaceTime,RaceDate,Weather)"+" VALUES(?,?,?,?,?)";
+				PreparedStatement prepStmt = con.prepareStatement(sqlQuery);
+				//prepStmt.setInt(1, id);
+				prepStmt.setInt(1, distance);
+				prepStmt.setString(2, raceType);
+				prepStmt.setString(3, time);
+				prepStmt.setString(4, date);
+				prepStmt.setString(5, weather);
+				prepStmt.executeUpdate();
+				prepStmt.close();
+			} catch(SQLException e) {
+				e.printStackTrace();
+			}
+		} catch(SQLException ex) {
+			ex.printStackTrace();
+		}
+		finally {
+			try {
+				if(con != null && !con.isClosed()) {
+					con.close();
+				}
+			} catch (SQLException ex) {
+				ex.printStackTrace();
+			}
+		}
+		
+	}
+//
+	public static void registrarEntradaSQL(
+			int GateNumber,
+			String JockeyName,
+			int Margins,
+			int FinishPosition,
+			int TimeElapsed,
+			int AmountWon,
+			String HorseName,
+			int MorningLineOdds,
+			int FinalOdds) {
+		int gateNumber = GateNumber;
+		String jockey = JockeyName;
+		int margins = Margins;
+		int finishPos = FinishPosition; 
+		int timeElap = TimeElapsed;
+		int amountWon = AmountWon;
+		String horse = HorseName;
+		int morningLO = MorningLineOdds; 
+		int finalOdds = FinalOdds;
+		
+		
+		Connection con = null;
+		
+		try {
+			String dbURL = "jdbc:sqlserver://localhost;integratedSecurity=true;databaseName=ProyectoBDD";
+			String user = "DavidV";
+			String pass = "2271999";
+			con = DriverManager.getConnection(dbURL, user, pass);
+			if(con != null) {
+				System.out.println("Conexion establecida");
+			}
+			
+			try (Statement stmt = con.createStatement()){
+				String sqlQuery = "INSERT INTO RaceEntry ([GateNumber],JockeyName,Margins,FinishPosition,TimeElapsed,AmountWon,HorseName,MorningLineOdds,FinalOdds)"+" VALUES(?,?,?,?,?,?,?,?,?)";
+				PreparedStatement prepStmt = con.prepareStatement(sqlQuery);
+				prepStmt.setInt(1, gateNumber);
+				prepStmt.setString(2, jockey);
+				prepStmt.setInt(3, margins);
+				prepStmt.setInt(4, finishPos);
+				prepStmt.setInt(5, timeElap);
+				prepStmt.setInt(6, amountWon);
+				prepStmt.setString(7, horse);
+				prepStmt.setInt(8, morningLO);
+				prepStmt.setInt(9, finalOdds);
+				prepStmt.executeUpdate();
+				prepStmt.close();
+			} catch(SQLException e) {
+				e.printStackTrace();
+			}
+		} catch(SQLException ex) {
+			ex.printStackTrace();
+		}
+		finally {
+			try {
+				if(con != null && !con.isClosed()) {
+					con.close();
+				}
+			} catch (SQLException ex) {
+				ex.printStackTrace();
+			}
+		}
+		
+	}
+// 
+	public static void registrarEspectadorSQL(
+			int TicketNo,
+			int BetAmount,
+			int AccountNo) {
+		int ticket = TicketNo;
+		int betAmount = BetAmount;
+		int account = AccountNo;
+	
+		
+		Connection con = null;
+		
+		try {
+			String dbURL = "jdbc:sqlserver://localhost;integratedSecurity=true;databaseName=ProyectoBDD";
+			String user = "DavidV";
+			String pass = "2271999";
+			con = DriverManager.getConnection(dbURL, user, pass);
+			if(con != null) {
+				System.out.println("Conexion establecida");
+			}
+			
+			try (Statement stmt = con.createStatement()){
+				String sqlQuery = "INSERT INTO Spectator ([TickectNo],BetAmount,AccountNo)"+" VALUES(?,?,?)";
+				PreparedStatement prepStmt = con.prepareStatement(sqlQuery);
+				prepStmt.setInt(1, ticket);
+				prepStmt.setInt(2, betAmount);
+				prepStmt.setInt(3, account);
+				prepStmt.executeUpdate();
+				prepStmt.close();
+			} catch(SQLException e) {
+				e.printStackTrace();
+			}
+		} catch(SQLException ex) {
+			ex.printStackTrace();
+		}
+		finally {
+			try {
+				if(con != null && !con.isClosed()) {
+					con.close();
+				}
+			} catch (SQLException ex) {
+				ex.printStackTrace();
+			}
+		}
+		
+	}
+//
+	public static void registrarTicketSQL(
+			int Code,
+			String PaymentMode,
+			int Price,
+			int Race,
+			String BetHorse,
+			String DateRace,
+			String TimeRace,
+			String PurchaseDate,
+			String PurchaseTime) {
+		int code = Code;
+		String payment = PaymentMode;
+		int price = Price;
+		int race = Race; 
+		String betHorse = BetHorse;
+		String date = DateRace;
+		String time = TimeRace;
+		String purDate = PurchaseDate; 
+		String purTime = PurchaseTime;
+		
+		
+		Connection con = null;
+		
+		try {
+			String dbURL = "jdbc:sqlserver://localhost;integratedSecurity=true;databaseName=ProyectoBDD";
+			String user = "DavidV";
+			String pass = "2271999";
+			con = DriverManager.getConnection(dbURL, user, pass);
+			if(con != null) {
+				System.out.println("Conexion establecida");
+			}
+			
+			try (Statement stmt = con.createStatement()){
+				String sqlQuery = "INSERT INTO Ticket ([Code],PaymentMode,Price,Race,BetHorse,DateRace,TimeRace,PurchaseDate,PurchaseTime)"+" VALUES(?,?,?,?,?,?,?,?,?)";
+				PreparedStatement prepStmt = con.prepareStatement(sqlQuery);
+				prepStmt.setInt(1, code);
+				prepStmt.setString(2, payment);
+				prepStmt.setInt(3, price);
+				prepStmt.setInt(4, race);
+				prepStmt.setString(5, betHorse);
+				prepStmt.setString(6, date);
+				prepStmt.setString(7, time);
+				prepStmt.setString(8, purDate );
+				prepStmt.setString(9, purTime);
+				prepStmt.executeUpdate();
+				prepStmt.close();
+			} catch(SQLException e) {
+				e.printStackTrace();
+			}
+		} catch(SQLException ex) {
+			ex.printStackTrace();
+		}
+		finally {
+			try {
+				if(con != null && !con.isClosed()) {
+					con.close();
+				}
+			} catch (SQLException ex) {
+				ex.printStackTrace();
+			}
+		}
+		
+	}
+	
 	
 	///ELIMINAR
 	
