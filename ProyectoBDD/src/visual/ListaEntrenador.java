@@ -63,7 +63,7 @@ public class ListaEntrenador extends JDialog {
 						Trainer trainer = Derby.getInstance().FindTrainerByID(code);
 						Derby.getInstance().eliminarTrainer(trainer);
 						SQLDatabaseConnection.EliminarEntrenadorSQL(code);
-						loadJockeys();
+						loadTrainers();
 						btnEliminar.setEnabled(false);
 					}
 				});
@@ -104,11 +104,11 @@ public class ListaEntrenador extends JDialog {
 			tableModel = new DefaultTableModel();
 			String[] columnNames = {"ID", "Nombre", "Apellido","Esatdo de Residencia"};
 			tableModel.setColumnIdentifiers(columnNames);
-			loadJockeys();
+			loadTrainers();
 		}
 	}
 	
-	public static void loadJockeys() {
+	public static void loadTrainers() {
 		tableModel.setRowCount(0);
 		fila = new Object[tableModel.getColumnCount()];
 		for (Trainer trainer : Derby.getInstance().getTrainers()) {
