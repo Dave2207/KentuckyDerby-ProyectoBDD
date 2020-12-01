@@ -109,6 +109,16 @@ public class Menu extends JFrame {
 			}
 		});
 		mnListas.add(mntmEmpleados);
+		
+		JMenuItem mntmCaballos = new JMenuItem("Caballos");
+		mntmCaballos.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ListaCaballos listC = new ListaCaballos();
+				listC.setModal(true);
+				listC.setVisible(true);
+			}
+		});
+		mnListas.add(mntmCaballos);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(new BorderLayout(0, 0));

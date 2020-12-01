@@ -63,7 +63,7 @@ public class ListaCaballos extends JDialog {
 						Horse horse = Derby.getInstance().FindHorseByName(code);
 						Derby.getInstance().eliminarCaballo(horse);
 						SQLDatabaseConnection.EliminarCaballoSQL(code);
-						loadEmpleados();
+						loadHorses();
 						btnEliminar.setEnabled(false);
 					}
 				});
@@ -104,29 +104,26 @@ public class ListaCaballos extends JDialog {
 			tableModel = new DefaultTableModel();
 			String[] columnNames = {"Nombre", "Establo", "Genero", "Edad", "Equipo","Score", "Carreras Ganadas", "Raza"};
 			tableModel.setColumnIdentifiers(columnNames);
-			loadEmpleados();
+			loadHorses();
 		}
 	}
 	
-	public static void loadEmpleados() {
+	public static void loadHorses() {
 		tableModel.setRowCount(0);
 		fila = new Object[tableModel.getColumnCount()];
-		for (Employee emp : Derby.getInstance().getEmployees()) {
-			fila[0] = emp.getID();
-			fila[1] = emp.getFirstName();
-			fila[2] = emp.getLastName();
-			fila[3] = emp.getAge();
-			fila[4] = emp.getGender();
-			fila[5] = emp.getPosition();
-			
+		for (Horse h : Derby.getInstance().getHorses()) {
+			fila[0] = h.getHorseName();
+			fila[1] = h.getBarn();
+			fila[2] = h.getGender();
+			fila[3] = h.getGear();
+			fila[4] = h.getScore();
+			fila[5] = h.getWonRaces();
+			fila[6] = h.getBreed();
 			tableModel.addRow(fila);
 		}
 		table.setModel(tableModel);
 		table.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 		table.getTableHeader().setReorderingAllowed(false);
-		TableColumnModel columnModel = table.getColumnModel();
-		columnModel.getColumn(1).setPreferredWidth(100);
-		columnModel.getColumn(2).setPreferredWidth(100);
-		columnModel.getColumn(5).setPreferredWidth(104);
+		//TableColumnModel columnModel = table.getColumnModel();
 	}
 }
