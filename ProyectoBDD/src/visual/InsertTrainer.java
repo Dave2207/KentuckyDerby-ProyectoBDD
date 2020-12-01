@@ -12,6 +12,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.border.TitledBorder;
 
+import SQL.SQLDatabaseConnection;
 import logic.Derby;
 import logic.Trainer;
 
@@ -100,6 +101,7 @@ public class InsertTrainer extends JDialog {
 					public void actionPerformed(ActionEvent e) {
 						Trainer tra = new Trainer(Integer.parseInt(txtIdTrainer.getText()), txtNombreTrainer.getText(), txtApellidoTrainer.getText(), txtStateResTrainer.getText());
 						Derby.getInstance().registrarTrainer(tra);
+						SQLDatabaseConnection.registrarEntrenadorSQL(tra.getFirstName(), tra.getLastName(), tra.getStateResidence());
 						JOptionPane.showMessageDialog(null, "Operacion Satisfactoria", "Notificacion", JOptionPane.INFORMATION_MESSAGE);
 						clean();
 					}

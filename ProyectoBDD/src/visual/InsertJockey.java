@@ -15,6 +15,7 @@ import javax.swing.JSpinner;
 import javax.swing.SpinnerNumberModel;
 import javax.swing.border.TitledBorder;
 
+import SQL.SQLDatabaseConnection;
 import logic.Derby;
 import logic.Jockey;
 
@@ -176,12 +177,14 @@ public class InsertJockey extends JDialog {
 						if(rdbtnGenMasc.isSelected()) {
 							Jockey jockey = new Jockey(Integer.parseInt(txtIdJockey.getText()), txtNombreJockey.getText(), txtApellidoJockey.getText(), "M", txtStateResJockey.getText(), (int) spnWonRaces.getValue(), (int) spnEdad.getValue(), (int) spnWeight.getValue());
 							Derby.getInstance().registrarJockey(jockey);
+							SQLDatabaseConnection.registrarJineteSQL(jockey.getFirstName(), jockey.getLastName(), jockey.getGender(), jockey.getStateResidence(), jockey.getWonRaces(), jockey.getYearsOfExp(), jockey.getJockeyWeight());
 							JOptionPane.showMessageDialog(null, "Operacion Satisfactoria", "Notificacion", JOptionPane.INFORMATION_MESSAGE);
 							clean();
 						}
 						if(rdbtnGenFem.isSelected()) {
 							Jockey jockey = new Jockey(Integer.parseInt(txtIdJockey.getText()), txtNombreJockey.getText(), txtApellidoJockey.getText(), "F", txtStateResJockey.getText(), (int) spnWonRaces.getValue(), (int) spnEdad.getValue(), (int) spnWeight.getValue());
 							Derby.getInstance().registrarJockey(jockey);
+							SQLDatabaseConnection.registrarJineteSQL(jockey.getFirstName(), jockey.getLastName(), jockey.getGender(), jockey.getStateResidence(), jockey.getWonRaces(), jockey.getYearsOfExp(), jockey.getJockeyWeight());
 							JOptionPane.showMessageDialog(null, "Operacion Satisfactoria", "Notificacion", JOptionPane.INFORMATION_MESSAGE);
 							clean();
 						}

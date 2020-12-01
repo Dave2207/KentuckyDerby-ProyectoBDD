@@ -136,7 +136,7 @@ public class SQLDatabaseConnection {
 	}
 //
 	public static void registrarJineteSQL(
-			int JockeyID,
+//			int JockeyID,
 			String FirstName,
 			String LastName,
 			String Gender,
@@ -144,7 +144,7 @@ public class SQLDatabaseConnection {
 			int WonRaces,
 			int YearsOfExp,
 			int JockeyWeight) {
-		int id = JockeyID;
+//		int id = JockeyID;
 		String nombre = FirstName;
 		String apellido = LastName;
 		String gen = Gender;
@@ -167,16 +167,16 @@ public class SQLDatabaseConnection {
 			}
 			
 			try (Statement stmt = con.createStatement()){
-				String sqlQuery = "INSERT INTO Jockey ([JockeyID],FirstName,LastName,Gender,StateResidence,WonRaces,YearsOfExperience,Weight_Jockey)"+" VALUES(?,?,?,?,?,?,?,?)";
+				String sqlQuery = "INSERT INTO Jockey (FirstName,LastName,Gender,StateResidence,WonRaces,YearsOfExperience,Weight_Jockey)"+" VALUES(?,?,?,?,?,?,?)";
 				PreparedStatement prepStmt = con.prepareStatement(sqlQuery);
-				prepStmt.setInt(1, id);
-				prepStmt.setString(2, nombre);
-				prepStmt.setString(3, apellido);
-				prepStmt.setString(4, gen);
-				prepStmt.setString(5, stateR);
-				prepStmt.setInt(6, wonRaces);
-				prepStmt.setInt(7, years);
-				prepStmt.setInt(8, weight);
+				//prepStmt.setInt(1, id);
+				prepStmt.setString(1, nombre);
+				prepStmt.setString(2, apellido);
+				prepStmt.setString(3, gen);
+				prepStmt.setString(4, stateR);
+				prepStmt.setInt(5, wonRaces);
+				prepStmt.setInt(6, years);
+				prepStmt.setInt(7, weight);
 				prepStmt.executeUpdate();
 				prepStmt.close();
 			} catch(SQLException e) {
@@ -198,11 +198,11 @@ public class SQLDatabaseConnection {
 	}
 //
 	public static void registrarDuenoSQL(
-			int OwnerID,
+//			int OwnerID,
 			String FirstName,
 			String LastName,
 			String StateResidence) {
-		int id = OwnerID;
+		//int id = OwnerID;
 		String nombre = FirstName;
 		String apellido = LastName;
 		String stateR = StateResidence;
@@ -219,12 +219,12 @@ public class SQLDatabaseConnection {
 			}
 			
 			try (Statement stmt = con.createStatement()){
-				String sqlQuery = "INSERT INTO Owner ([OwnerID],FirstName,LastName,StateResidence)"+" VALUES(?,?,?,?)";
+				String sqlQuery = "INSERT INTO Owner (FirstName,LastName,StateResidence)"+" VALUES(?,?,?)";
 				PreparedStatement prepStmt = con.prepareStatement(sqlQuery);
-				prepStmt.setInt(1, id);
-				prepStmt.setString(2, nombre);
-				prepStmt.setString(3, apellido);
-				prepStmt.setString(4, stateR);
+	//			prepStmt.setInt(1, id);
+				prepStmt.setString(1, nombre);
+				prepStmt.setString(2, apellido);
+				prepStmt.setString(3, stateR);
 				prepStmt.executeUpdate();
 				prepStmt.close();
 			} catch(SQLException e) {
@@ -246,11 +246,11 @@ public class SQLDatabaseConnection {
 	}
 //
 	public static void registrarEntrenadorSQL(
-			int TrainerID,
+//			int TrainerID,
 			String FirstName,
 			String LastName,
 			String StateResidence) {
-		int id = TrainerID;
+		//int id = TrainerID;
 		String nombre = FirstName;
 		String apellido = LastName;
 		String stateR = StateResidence;
@@ -267,12 +267,12 @@ public class SQLDatabaseConnection {
 			}
 			
 			try (Statement stmt = con.createStatement()){
-				String sqlQuery = "INSERT INTO Trainer ([TrainerID],FirstName,LastName,StateResidence)"+" VALUES(?,?,?,?)";
+				String sqlQuery = "INSERT INTO Trainer (FirstName,LastName,StateResidence)"+" VALUES(?,?,?)";
 				PreparedStatement prepStmt = con.prepareStatement(sqlQuery);
-				prepStmt.setInt(1, id);
-				prepStmt.setString(2, nombre);
-				prepStmt.setString(3, apellido);
-				prepStmt.setString(4, stateR);
+				//prepStmt.setInt(1, id);
+				prepStmt.setString(1, nombre);
+				prepStmt.setString(2, apellido);
+				prepStmt.setString(3, stateR);
 				prepStmt.executeUpdate();
 				prepStmt.close();
 			} catch(SQLException e) {

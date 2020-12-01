@@ -10,6 +10,7 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumnModel;
 
+import SQL.SQLDatabaseConnection;
 import logic.Derby;
 import logic.Employee;
 
@@ -60,7 +61,9 @@ public class ListaEmpleados extends JDialog {
 					public void actionPerformed(ActionEvent e) {
 						Employee emp = Derby.getInstance().FindEmpByID(code);
 						Derby.getInstance().eliminarEmpleado(emp);
-						
+						SQLDatabaseConnection.EliminarEmpleadoSQL(code);
+						loadEmpleados();
+						btnEliminar.setEnabled(false);
 					}
 				});
 				btnEliminar.setActionCommand("OK");

@@ -14,6 +14,7 @@ import javax.swing.JSpinner;
 import javax.swing.JRadioButton;
 import javax.swing.border.TitledBorder;
 
+import SQL.SQLDatabaseConnection;
 import logic.Derby;
 import logic.Employee;
 import logic.Horse;
@@ -173,6 +174,7 @@ public class InsertHorse extends JDialog {
 						if(rdbnGenMasc.isSelected()) {
 							Horse horse = new Horse(txtNombreHorse.getText(), txtEstablo.getText(), "M", (int) spnEdad.getValue(), txtGear.getText(), (int) spnScore.getValue(), (int) spnWonRaces.getValue(), cbxBreed.getSelectedItem().toString());
 							Derby.getInstance().registrarCaballo(horse);
+							SQLDatabaseConnection.registrarCaballoSQL(horse.getHorseName(), horse.getBarn(), horse.getGender(), horse.getAge(), horse.getGear(), horse.getScore(), horse.getWonRaces(), horse.getBreed());
 							JOptionPane.showMessageDialog(null, "Operacion Satisfactoria", "Notificacion", JOptionPane.INFORMATION_MESSAGE);
 							clean();
 							//System.out.println(Derby.getInstance().getHorses().get(0).getHorseName());
@@ -180,6 +182,7 @@ public class InsertHorse extends JDialog {
 						if(rdbnGenFem.isSelected()) {
 							Horse horse = new Horse(txtNombreHorse.getText(), txtEstablo.getText(), "F", (int) spnEdad.getValue(), txtGear.getText(), (int) spnScore.getValue(), (int) spnWonRaces.getValue(), cbxBreed.getSelectedItem().toString());
 							Derby.getInstance().registrarCaballo(horse);
+							SQLDatabaseConnection.registrarCaballoSQL(horse.getHorseName(), horse.getBarn(), horse.getGender(), horse.getAge(), horse.getGear(), horse.getScore(), horse.getWonRaces(), horse.getBreed());
 							JOptionPane.showMessageDialog(null, "Operacion Satisfactoria", "Notificacion", JOptionPane.INFORMATION_MESSAGE);
 							clean();
 							//System.out.println(Derby.getInstance().getHorses().get(0).getHorseName());

@@ -13,6 +13,7 @@ import javax.swing.JTextField;
 import javax.swing.border.TitledBorder;
 import javax.swing.table.DefaultTableModel;
 
+import SQL.SQLDatabaseConnection;
 import logic.Derby;
 import logic.Horse;
 import logic.Owner;
@@ -116,6 +117,7 @@ public class InsertOwner extends JDialog {
 					public void actionPerformed(ActionEvent e) {
 						Owner own = new Owner(Integer.parseInt(txtIdOwner.getText()), txtNombreOwner.getText(), txtApellidoOwner.getText(), txtStateResOwner.getText());
 						Derby.getInstance().registrarOwner(own);
+						SQLDatabaseConnection.registrarDuenoSQL(own.getFirstName(), own.getLastName(), own.getStateResidence());
 						JOptionPane.showMessageDialog(null, "Operacion Satisfactoria", "Notificacion", JOptionPane.INFORMATION_MESSAGE);
 						clean();
 					}

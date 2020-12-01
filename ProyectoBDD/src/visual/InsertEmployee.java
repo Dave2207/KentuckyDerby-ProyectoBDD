@@ -14,6 +14,7 @@ import javax.swing.JRadioButton;
 import javax.swing.JSpinner;
 import javax.swing.border.TitledBorder;
 
+import SQL.SQLDatabaseConnection;
 import logic.Derby;
 import logic.Employee;
 
@@ -189,12 +190,14 @@ public class InsertEmployee extends JDialog {
 						if(rdbnGenMasc.isSelected()) {
 							Employee emp = new Employee(Integer.parseInt(txtIdEmp.getText()), txtNombreEmp.getText(), txtApellidoEmp.getText(), Integer.parseInt(spnEdad.getValue().toString()), txtFechaNac.getText(), "M", cbxPos.getSelectedItem().toString(), Integer.parseInt(txtZipCode.getText()));
 							Derby.getInstance().registrarEmpleado(emp);
+							SQLDatabaseConnection.registrarEmpleadoSQL(emp.getFirstName(), emp.getLastName(), emp.getAge(), emp.getBirthday(), emp.getGender(), emp.getPosition(), emp.getZIP_code());
 							JOptionPane.showMessageDialog(null, "Operacion Satisfactoria", "Notificacion", JOptionPane.INFORMATION_MESSAGE);
 							clean();
 						}
 						if(rdbnGenFem.isSelected()) {
 							Employee emp = new Employee(Integer.parseInt(txtIdEmp.getText()), txtNombreEmp.getText(), txtApellidoEmp.getText(), Integer.parseInt(spnEdad.getValue().toString()), txtFechaNac.getText(), "F", cbxPos.getSelectedItem().toString(), Integer.parseInt(txtZipCode.getText()));
 							Derby.getInstance().registrarEmpleado(emp);
+							SQLDatabaseConnection.registrarEmpleadoSQL(emp.getFirstName(), emp.getLastName(), emp.getAge(), emp.getBirthday(), emp.getGender(), emp.getPosition(), emp.getZIP_code());
 							JOptionPane.showMessageDialog(null, "Operacion Satisfactoria", "Notificacion", JOptionPane.INFORMATION_MESSAGE);
 							clean();
 						}
