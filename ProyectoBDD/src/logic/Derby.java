@@ -240,4 +240,18 @@ public class Derby {
 		}
 		return horse;
 	}
+	
+	public Jockey FindJockeyByID(int id) {
+		Jockey jockey = null;
+		boolean found = false;
+		int i = 0;
+		while(!found && i<jockeys.size()) {
+			if(jockeys.get(i).getJockeyID() == id) {
+				jockey = jockeys.get(i);
+				found = true;
+			}
+			i++;
+		}
+		return jockey;
+	}
 }
