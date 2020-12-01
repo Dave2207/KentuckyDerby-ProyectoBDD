@@ -12,8 +12,8 @@ import javax.swing.table.TableColumnModel;
 
 import SQL.SQLDatabaseConnection;
 import logic.Derby;
-import logic.Jockey;
-import logic.Jockey;
+import logic.Trainer;
+import logic.Trainer;
 
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -22,7 +22,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.ActionEvent;
 
-public class ListadoJockey extends JDialog {
+public class ListaEntrenador extends JDialog {
 	private static Object[] fila;
 	private static DefaultTableModel tableModel;
 	private static JButton btnEliminar;
@@ -34,7 +34,7 @@ public class ListadoJockey extends JDialog {
 	 */
 	public static void main(String[] args) {
 		try {
-			ListadoJockey dialog = new ListadoJockey();
+			ListaEntrenador dialog = new ListaEntrenador();
 			dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 			dialog.setVisible(true);
 		} catch (Exception e) {
@@ -45,8 +45,8 @@ public class ListadoJockey extends JDialog {
 	/**
 	 * Create the dialog.
 	 */
-	public ListadoJockey() {
-		setTitle("Listado de Jinetes");
+	public ListaEntrenador() {
+		setTitle("Listado de Entrenadores");
 		setResizable(false);
 		setBounds(100, 100, 538, 349);
 		getContentPane().setLayout(new BorderLayout());
@@ -60,9 +60,9 @@ public class ListadoJockey extends JDialog {
 				btnEliminar.setEnabled(false);
 				btnEliminar.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
-						Jockey jockey = Derby.getInstance().FindJockeyByID(code);
-						Derby.getInstance().eliminarJockey(jockey);
-						SQLDatabaseConnection.EliminarJineteSQL(code);
+						Trainer trainer = Derby.getInstance().FindTrainerByID(code);
+						Derby.getInstance().eliminarTrainer(trainer);
+						SQLDatabaseConnection.EliminarEntrenadorSQL(code);
 						loadJockeys();
 						btnEliminar.setEnabled(false);
 					}
@@ -102,7 +102,7 @@ public class ListadoJockey extends JDialog {
 			});
 			scrollPane.setViewportView(table);
 			tableModel = new DefaultTableModel();
-			String[] columnNames = {"ID", "Nombre", "Apellido", "Genero","Esatdo de Residencia", "Carreras Ganadas", "Años de Experiencia", "Peso"};
+			String[] columnNames = {"ID", "Nombre", "Apellido","Esatdo de Residencia"};
 			tableModel.setColumnIdentifiers(columnNames);
 			loadJockeys();
 		}
@@ -111,15 +111,12 @@ public class ListadoJockey extends JDialog {
 	public static void loadJockeys() {
 		tableModel.setRowCount(0);
 		fila = new Object[tableModel.getColumnCount()];
-		for (Jockey jockey : Derby.getInstance().getJockeys()) {
-			fila[0] = jockey.getJockeyID();
-			fila[1] = jockey.getFirstName();
-			fila[2] = jockey.getLastName();
-			fila[3] = jockey.getGender();
-			fila[4] = jockey.getStateResidence();
-			fila[5] = jockey.getWonRaces();
-			fila[6] = jockey.getYearsOfExp();
-			fila[7] = jockey.getJockeyWeight();
+		for (Trainer trainer : Derby.getInstance().getTrainers()) {
+			fila[0] = trainer.getTrainerID();
+			fila[1] = trainer.getFirstName();
+			fila[2] = trainer.getLastName();
+			fila[3] = trainer.getStateResidence();
+			
 			
 			tableModel.addRow(fila);
 		}
