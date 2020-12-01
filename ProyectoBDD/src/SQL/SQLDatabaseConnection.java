@@ -167,7 +167,7 @@ public class SQLDatabaseConnection {
 			}
 			
 			try (Statement stmt = con.createStatement()){
-				String sqlQuery = "INSERT INTO Jockey ([JockeyID],FirstName,LastName,Genero,StateResidence,CarrerasGanadas,Experiencia,Peso)"+" VALUES(?,?,?,?,?,?,?,?)";
+				String sqlQuery = "INSERT INTO Jockey ([JockeyID],FirstName,LastName,Gender,StateResidence,WonRaces,YearsOfExperience,Weight_Jockey)"+" VALUES(?,?,?,?,?,?,?,?)";
 				PreparedStatement prepStmt = con.prepareStatement(sqlQuery);
 				prepStmt.setInt(1, id);
 				prepStmt.setString(2, nombre);
@@ -197,5 +197,99 @@ public class SQLDatabaseConnection {
 		
 	}
 //
-	
+	public static void registrarDuenoSQL(
+			int OwnerID,
+			String FirstName,
+			String LastName,
+			String StateResidence) {
+		int id = OwnerID;
+		String nombre = FirstName;
+		String apellido = LastName;
+		String stateR = StateResidence;
+		
+		Connection con = null;
+		
+		try {
+			String dbURL = "jdbc:sqlserver://localhost;integratedSecurity=true;databaseName=ProyectoBDD";
+			String user = "DavidV";
+			String pass = "2271999";
+			con = DriverManager.getConnection(dbURL, user, pass);
+			if(con != null) {
+				System.out.println("Conexion establecida");
+			}
+			
+			try (Statement stmt = con.createStatement()){
+				String sqlQuery = "INSERT INTO Owner ([OwnerID],FirstName,LastName,StateResidence)"+" VALUES(?,?,?,?)";
+				PreparedStatement prepStmt = con.prepareStatement(sqlQuery);
+				prepStmt.setInt(1, id);
+				prepStmt.setString(2, nombre);
+				prepStmt.setString(3, apellido);
+				prepStmt.setString(4, stateR);
+				prepStmt.executeUpdate();
+				prepStmt.close();
+			} catch(SQLException e) {
+				e.printStackTrace();
+			}
+		} catch(SQLException ex) {
+			ex.printStackTrace();
+		}
+		finally {
+			try {
+				if(con != null && !con.isClosed()) {
+					con.close();
+				}
+			} catch (SQLException ex) {
+				ex.printStackTrace();
+			}
+		}
+		
+	}
+//
+	public static void registrarEntrenadorSQL(
+			int TrainerID,
+			String FirstName,
+			String LastName,
+			String StateResidence) {
+		int id = TrainerID;
+		String nombre = FirstName;
+		String apellido = LastName;
+		String stateR = StateResidence;
+		
+		Connection con = null;
+		
+		try {
+			String dbURL = "jdbc:sqlserver://localhost;integratedSecurity=true;databaseName=ProyectoBDD";
+			String user = "DavidV";
+			String pass = "2271999";
+			con = DriverManager.getConnection(dbURL, user, pass);
+			if(con != null) {
+				System.out.println("Conexion establecida");
+			}
+			
+			try (Statement stmt = con.createStatement()){
+				String sqlQuery = "INSERT INTO Trainer ([TrainerID],FirstName,LastName,StateResidence)"+" VALUES(?,?,?,?)";
+				PreparedStatement prepStmt = con.prepareStatement(sqlQuery);
+				prepStmt.setInt(1, id);
+				prepStmt.setString(2, nombre);
+				prepStmt.setString(3, apellido);
+				prepStmt.setString(4, stateR);
+				prepStmt.executeUpdate();
+				prepStmt.close();
+			} catch(SQLException e) {
+				e.printStackTrace();
+			}
+		} catch(SQLException ex) {
+			ex.printStackTrace();
+		}
+		finally {
+			try {
+				if(con != null && !con.isClosed()) {
+					con.close();
+				}
+			} catch (SQLException ex) {
+				ex.printStackTrace();
+			}
+		}
+		
+	}
 }
