@@ -58,6 +58,9 @@ public class ListaEmpleados extends JDialog {
 				btnEliminar.setEnabled(false);
 				btnEliminar.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
+						Employee emp = Derby.getInstance().FindEmpByID(code);
+						Derby.getInstance().eliminarEmpleado(emp);
+						
 					}
 				});
 				btnEliminar.setActionCommand("OK");

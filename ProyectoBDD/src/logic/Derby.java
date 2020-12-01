@@ -142,4 +142,44 @@ public class Derby {
 		trainers.remove(tra);
 		genCodTrainer--;
 	}
+	
+	public Employee FindEmpByID(int id) {
+		Employee emp = null;
+		boolean found = false;
+		int i = 0;
+		while(!found && i<employees.size()) {
+			if(employees.get(i).getID() == id) {
+				emp = employees.get(i);
+				found = true;
+			}
+			i++;
+		}
+		return emp;
+	}
+	public Owner FindOwnerByID(int id) {
+		Owner own = null;
+		boolean found = false;
+		int i = 0;
+		while(!found && i<owners.size()) {
+			if(owners.get(i).getOwnerID() == id) {
+				own = owners.get(i);
+				found = true;
+			}
+			i++;
+		}
+		return own;
+	}
+	public Trainer FindTrainerByID(int id) {
+		Trainer trainer = null;
+		boolean found = false;
+		int i = 0;
+		while(!found && i<trainers.size()) {
+			if(trainers.get(i).getTrainerID() == id) {
+				trainer = trainers.get(i);
+				found = true;
+			}
+			i++;
+		}
+		return trainer;
+	}
 }

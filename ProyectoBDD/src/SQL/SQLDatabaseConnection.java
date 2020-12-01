@@ -347,7 +347,7 @@ public class SQLDatabaseConnection {
 			String user = "DavidV";
 			String pass = "2271999";
 			
-			String sql = "DELETE FROM Employee WHERE ID =? ";
+			String sql = "DELETE FROM Jockey WHERE ID =? ";
 		
 			try (Connection con = DriverManager.getConnection(dbURL, user, pass);
 					PreparedStatement stmt = con.prepareStatement(sql)) {
