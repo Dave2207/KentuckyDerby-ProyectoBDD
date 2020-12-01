@@ -115,10 +115,11 @@ public class ListaCaballos extends JDialog {
 			fila[0] = h.getHorseName();
 			fila[1] = h.getBarn();
 			fila[2] = h.getGender();
-			fila[3] = h.getGear();
-			fila[4] = h.getScore();
-			fila[5] = h.getWonRaces();
-			fila[6] = h.getBreed();
+			fila[3] = h.getAge();
+			fila[4] = h.getGear();
+			fila[5] = h.getScore();
+			fila[6] = h.getWonRaces();
+			fila[7] = h.getBreed();
 			tableModel.addRow(fila);
 		}
 		table.setModel(tableModel);
