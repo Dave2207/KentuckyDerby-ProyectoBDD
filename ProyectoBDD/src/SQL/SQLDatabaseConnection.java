@@ -11,7 +11,7 @@ public class SQLDatabaseConnection {
 	public static void main(String[] args) {
 		registrarEmpleadoSQL("David", "Vasquez", 21, "22-7-1999", "M", "LOL", 51000);
 	}
-	
+	///INSERTAR
 	public static void registrarEmpleadoSQL(
 //			int ID,
 			String firstName,
@@ -292,4 +292,29 @@ public class SQLDatabaseConnection {
 		}
 		
 	}
+	
+	///ELIMINAR
+	
+	public static void EliminarEmpleadoSQL ( int PK_Employee) {
+		int empleado = PK_Employee; 
+		
+		
+			String dbURL = "jdbc:sqlserver://localhost;integratedSecurity=true;databaseName=ProyectoBDD";
+			String user = "DavidV";
+			String pass = "2271999";
+			
+			String sql = "DELETE FROM Employee WHERE ID =? ";
+		
+			try (Connection con = DriverManager.getConnection(dbURL, user, pass);
+					PreparedStatement stmt = con.prepareStatement(sql)) {
+				
+				stmt.setInt(1, empleado);
+				stmt.executeUpdate();
+				
+				System.out.println("Eliminado correctamente");
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}			
+	}
+	
 }
