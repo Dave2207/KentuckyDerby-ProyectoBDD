@@ -46,6 +46,7 @@ public class InsertRace extends JDialog {
 	 * Create the dialog.
 	 */
 	public InsertRace() {
+		setResizable(false);
 		setTitle("Registro Carrera");
 		setBounds(100, 100, 325, 467);
 		getContentPane().setLayout(new BorderLayout());
@@ -89,7 +90,7 @@ public class InsertRace extends JDialog {
 		}
 		
 		cbxTipoRace = new JComboBox();
-		cbxTipoRace.setModel(new DefaultComboBoxModel(new String[] {"Plana", "Obst\u00E1culos", "Cl\u00E1sica"}));
+		cbxTipoRace.setModel(new DefaultComboBoxModel(new String[] {"<Seleccione la categoria>", "Plana", "Obst\u00E1culos", "Cl\u00E1sica"}));
 		cbxTipoRace.setBounds(103, 131, 171, 20);
 		contentPanel.add(cbxTipoRace);
 		
@@ -116,7 +117,7 @@ public class InsertRace extends JDialog {
 		contentPanel.add(lblClima);
 		
 		cbxClima = new JComboBox();
-		cbxClima.setModel(new DefaultComboBoxModel(new String[] {"Soleado", "Nublado", "Lluvioso", "Ventoso", "Nevado"}));
+		cbxClima.setModel(new DefaultComboBoxModel(new String[] {"<Clima>", "Soleado", "Nublado", "Lluvioso", "Ventoso", "Nevado"}));
 		cbxClima.setBounds(103, 282, 86, 20);
 		contentPanel.add(cbxClima);
 		{
