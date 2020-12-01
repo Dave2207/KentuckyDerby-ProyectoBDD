@@ -46,7 +46,7 @@ public class ListaTickets extends JDialog {
 	 * Create the dialog.
 	 */
 	public ListaTickets() {
-		setTitle("Listado de Caballos");
+		setTitle("Listado de Tickets");
 		setResizable(false);
 		setBounds(100, 100, 538, 349);
 		getContentPane().setLayout(new BorderLayout());
