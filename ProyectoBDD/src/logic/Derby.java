@@ -8,10 +8,12 @@ public class Derby {
 	private ArrayList<Jockey> jockeys;
 	private ArrayList<Owner> owners;
 	private ArrayList<Trainer> trainers;
+	private ArrayList<Race> races;
 	private static int genCodEmp = 1;
 	private static int genCodJockey = 1;
 	private static int genCodOwner = 1;
 	private static int genCodTrainer = 1;
+	private static int genCodRace = 1;
 	private static Derby derb = null;
 	
 	private Derby() {
@@ -21,6 +23,7 @@ public class Derby {
 		this.jockeys = new ArrayList<Jockey>();
 		this.owners = new ArrayList<Owner>();
 		this.trainers = new ArrayList<Trainer>();
+		this.races = new ArrayList<Race>();
 	}
 	
 	public static Derby getInstance() {
@@ -70,6 +73,14 @@ public class Derby {
 		this.trainers = trainers;
 	}
 	
+	public ArrayList<Race> getRaces() {
+		return races;
+	}
+
+	public void setRaces(ArrayList<Race> races) {
+		this.races = races;
+	}
+	
 	public void registrarEmpleado(Employee employee) {
 		employees.add(employee);
 		genCodEmp++;
@@ -99,6 +110,16 @@ public class Derby {
 	public void eliminarJockey(Jockey jockey) {
 		jockeys.remove(jockey);
 		genCodJockey--;
+	}
+	
+	public void registrarRace(Race race) {
+		races.add(race);
+	}
+	
+	public void eliminarRace(Race race) {
+		races.remove(race);
+		genCodRace--;
+		
 	}
 
 	public static int getGenCodJockey() {
@@ -132,6 +153,15 @@ public class Derby {
 	public static void setGenCodTrainer(int genCodTrainer) {
 		Derby.genCodTrainer = genCodTrainer;
 	}
+	
+	public static int getGenCodRace() {
+		return genCodRace;
+	}
+
+	public static void setGenCodRace(int genCodRace) {
+		Derby.genCodRace = genCodRace;
+	}
+	
 
 	public void registrarTrainer(Trainer tra) {
 		trainers.add(tra);
@@ -181,5 +211,19 @@ public class Derby {
 			i++;
 		}
 		return trainer;
+	}
+	
+	public Race FindRaceByID(int id) {
+		Race race = null;
+		boolean found = false;
+		int i = 0;
+		while(!found && i<races.size()) {
+			if(races.get(i).getRaceID() == id) {
+				race = races.get(i);
+				found = true;
+			}
+			i++;
+		}
+		return race;
 	}
 }
