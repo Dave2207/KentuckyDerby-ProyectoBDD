@@ -226,4 +226,18 @@ public class Derby {
 		}
 		return race;
 	}
+	
+	public Horse FindHorseByName(String name) {
+		Horse horse = null;
+		boolean found = false;
+		int i = 0;
+		while(!found && i<horses.size()) {
+			if(horses.get(i).getHorseName().equalsIgnoreCase(name)) {
+				horse = horses.get(i);
+				found = true;
+			}
+			i++;
+		}
+		return horse;
+	}
 }
