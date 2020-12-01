@@ -13,7 +13,7 @@ import javax.swing.table.TableColumnModel;
 
 import SQL.SQLDatabaseConnection;
 import logic.Derby;
-import logic.Horse;
+import logic.Ticket;
 
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -22,11 +22,11 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.ActionEvent;
 
-public class ListaCaballos extends JDialog {
+public class ListaTickets extends JDialog {
 	private static Object[] fila;
 	private static DefaultTableModel tableModel;
 	private static JButton btnEliminar;
-	private String code;
+	private int code;
 	private static JTable table;
 
 	/**
@@ -34,7 +34,7 @@ public class ListaCaballos extends JDialog {
 	 */
 	public static void main(String[] args) {
 		try {
-			ListaCaballos dialog = new ListaCaballos();
+			ListaTickets dialog = new ListaTickets();
 			dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 			dialog.setVisible(true);
 		} catch (Exception e) {
@@ -45,7 +45,7 @@ public class ListaCaballos extends JDialog {
 	/**
 	 * Create the dialog.
 	 */
-	public ListaCaballos() {
+	public ListaTickets() {
 		setTitle("Listado de Caballos");
 		setResizable(false);
 		setBounds(100, 100, 538, 349);
@@ -60,11 +60,11 @@ public class ListaCaballos extends JDialog {
 				btnEliminar.setEnabled(false);
 				btnEliminar.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
-						Horse horse = Derby.getInstance().FindHorseByName(code);
-						Derby.getInstance().eliminarCaballo(horse);
-						SQLDatabaseConnection.EliminarCaballoSQL(code);
+						Ticket ticket = Derby.getInstance().FindTicketByID(code);
+						Derby.getInstance().eliminarTicket(ticket);
+						SQLDatabaseConnection.EliminarTicketSQL(code);
 						JOptionPane.showMessageDialog(null, "Se ha borrado este registro", "Notificacion", JOptionPane.INFORMATION_MESSAGE);
-						loadHorses();
+						loadTickets();
 						btnEliminar.setEnabled(false);
 					}
 				});
@@ -97,30 +97,30 @@ public class ListaCaballos extends JDialog {
 					if(table.getSelectedRow()>=0) {
 						btnEliminar.setEnabled(true);
 						int index = table.getSelectedRow();
-						code = (String)table.getModel().getValueAt(index, 0);
+						code = (int)table.getModel().getValueAt(index, 0);
 					}
 				}
 			});
 			scrollPane.setViewportView(table);
 			tableModel = new DefaultTableModel();
-			String[] columnNames = {"Nombre", "Establo", "Genero", "Edad", "Equipo","Score", "Carreras Ganadas", "Raza"};
+			String[] columnNames = {"Código", "Modo de Pago", "Precio", "Caballo Apostado", "Fecha de la Carrera", "Hora de la Carrera", "Fecha de Compra", "Hora de Compra"};
 			tableModel.setColumnIdentifiers(columnNames);
-			loadHorses();
+			loadTickets();
 		}
 	}
 	
-	public static void loadHorses() {
+	public static void loadTickets() {
 		tableModel.setRowCount(0);
 		fila = new Object[tableModel.getColumnCount()];
-		for (Horse h : Derby.getInstance().getHorses()) {
-			fila[0] = h.getHorseName();
-			fila[1] = h.getBarn();
-			fila[2] = h.getGender();
-			fila[3] = h.getAge();
-			fila[4] = h.getGear();
-			fila[5] = h.getScore();
-			fila[6] = h.getWonRaces();
-			fila[7] = h.getBreed();
+		for (Ticket ticket : Derby.getInstance().getTickets()) {
+			fila[0] = ticket.getCode();
+			fila[1] = ticket.getPaymentMode();
+			fila[2] = ticket.getPrice();
+			fila[3] = ticket.getBetHorse();
+			fila[4] = ticket.getDateRace();
+			fila[5] = ticket.getTimeRace();
+			fila[6] = ticket.getDatePurchase();
+			fila[7] = ticket.getTimePurchase();
 			tableModel.addRow(fila);
 		}
 		table.setModel(tableModel);
@@ -129,3 +129,4 @@ public class ListaCaballos extends JDialog {
 		//TableColumnModel columnModel = table.getColumnModel();
 	}
 }
+
