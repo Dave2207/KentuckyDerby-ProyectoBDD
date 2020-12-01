@@ -13,7 +13,6 @@ import javax.swing.table.TableColumnModel;
 import SQL.SQLDatabaseConnection;
 import logic.Derby;
 import logic.Trainer;
-import logic.Trainer;
 
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
