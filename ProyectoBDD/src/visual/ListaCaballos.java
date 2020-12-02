@@ -71,6 +71,21 @@ public class ListaCaballos extends JDialog {
 					}
 				});
 				{
+
+					JButton btnModificar = new JButton("Modificar");
+					btnModificar.addActionListener(new ActionListener() {
+						public void actionPerformed(ActionEvent e) {
+							
+							
+							SQLDatabaseConnection.ModificarCaballoSQL(fila[1].toString(), fila[2].toString(),Integer.parseInt(fila[3].toString()), fila[4].toString(), Integer.parseInt(fila[5].toString()),Integer.parseInt(fila[6].toString()),  fila[7].toString(), fila[0].toString());
+							JOptionPane.showMessageDialog(null, "Se modifico correctamente!! ", "Notificacion", JOptionPane.INFORMATION_MESSAGE);
+							
+							loadHorses();
+						}
+					});
+					btnModificar.setBounds(295, 8, 89, 23);
+				}
+				{
 					btnModificar = new JButton("Modificar");
 					btnModificar.setEnabled(false);
 					buttonPane.add(btnModificar);
