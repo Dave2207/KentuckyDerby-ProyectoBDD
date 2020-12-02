@@ -5,6 +5,7 @@ import java.awt.FlowLayout;
 
 import javax.swing.JButton;
 import javax.swing.JDialog;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
@@ -63,6 +64,7 @@ public class ListaCaballos extends JDialog {
 						Horse horse = Derby.getInstance().FindHorseByName(code);
 						Derby.getInstance().eliminarCaballo(horse);
 						SQLDatabaseConnection.EliminarCaballoSQL(code);
+						JOptionPane.showMessageDialog(null, "Se ha borrado este registro", "Notificacion", JOptionPane.INFORMATION_MESSAGE);
 						loadHorses();
 						btnEliminar.setEnabled(false);
 					}

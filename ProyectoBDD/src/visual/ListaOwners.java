@@ -9,32 +9,33 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableColumnModel;
 
 import SQL.SQLDatabaseConnection;
 import logic.Derby;
-import logic.Employee;
+import logic.Owner;
 
-import javax.swing.JScrollPane;
-import javax.swing.JTable;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.ActionEvent;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
 
-public class ListaEmpleados extends JDialog {
+public class ListaOwners extends JDialog {
+
+	private final JPanel contentPanel = new JPanel();
 	private static Object[] fila;
-	private static DefaultTableModel tableModel;
 	private static JButton btnEliminar;
-	private int code;
+	private static DefaultTableModel tableModel;
 	private static JTable table;
+	private static int code;
 
 	/**
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
 		try {
-			ListaEmpleados dialog = new ListaEmpleados();
+			ListaOwners dialog = new ListaOwners();
 			dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 			dialog.setVisible(true);
 		} catch (Exception e) {
@@ -45,11 +46,15 @@ public class ListaEmpleados extends JDialog {
 	/**
 	 * Create the dialog.
 	 */
-	public ListaEmpleados() {
-		setTitle("Listado de Empleados");
+	public ListaOwners() {
+		setTitle("Listado de Due\u00F1os de caballos");
 		setResizable(false);
-		setBounds(100, 100, 538, 349);
+		setBounds(100, 100, 578, 371);
 		getContentPane().setLayout(new BorderLayout());
+		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
+		getContentPane().add(contentPanel, BorderLayout.CENTER);
+		contentPanel.setLayout(null);
+		
 		setLocationRelativeTo(null);
 		{
 			JPanel buttonPane = new JPanel();
@@ -57,17 +62,17 @@ public class ListaEmpleados extends JDialog {
 			getContentPane().add(buttonPane, BorderLayout.SOUTH);
 			{
 				btnEliminar = new JButton("Eliminar");
-				btnEliminar.setEnabled(false);
 				btnEliminar.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
-						Employee emp = Derby.getInstance().FindEmpByID(code);
-						Derby.getInstance().eliminarEmpleado(emp);
-						SQLDatabaseConnection.EliminarEmpleadoSQL(code);
+						Owner own = Derby.getInstance().FindOwnerByID(code);
+						Derby.getInstance().eliminarOwner(own);
+						SQLDatabaseConnection.EliminarDuenoSQL(code);
 						JOptionPane.showMessageDialog(null, "Se ha borrado este registro", "Notificacion", JOptionPane.INFORMATION_MESSAGE);
-						loadEmpleados();
+						loadOwners();
 						btnEliminar.setEnabled(false);
 					}
 				});
+				btnEliminar.setEnabled(false);
 				btnEliminar.setActionCommand("OK");
 				buttonPane.add(btnEliminar);
 				getRootPane().setDefaultButton(btnEliminar);
@@ -97,37 +102,29 @@ public class ListaEmpleados extends JDialog {
 					if(table.getSelectedRow()>=0) {
 						btnEliminar.setEnabled(true);
 						int index = table.getSelectedRow();
-						code = (int)table.getModel().getValueAt(index, 0);
+						code = (int) table.getModel().getValueAt(index, 0);
 					}
 				}
 			});
 			scrollPane.setViewportView(table);
 			tableModel = new DefaultTableModel();
-			String[] columnNames = {"ID", "Nombre", "Apellido", "Edad", "Genero","Posicion"};
+			String[] columnNames = {"ID", "Nombre", "Apellido", "Reside en:"};
 			tableModel.setColumnIdentifiers(columnNames);
-			loadEmpleados();
+			//loadHorses();
 		}
 	}
-	
-	public static void loadEmpleados() {
+	public static void loadOwners() {
 		tableModel.setRowCount(0);
 		fila = new Object[tableModel.getColumnCount()];
-		for (Employee emp : Derby.getInstance().getEmployees()) {
-			fila[0] = emp.getID();
-			fila[1] = emp.getFirstName();
-			fila[2] = emp.getLastName();
-			fila[3] = emp.getAge();
-			fila[4] = emp.getGender();
-			fila[5] = emp.getPosition();
-			
+		for (Owner own : Derby.getInstance().getOwners()) {
+			fila[0] = own.getOwnerID();
+			fila[1] = own.getFirstName();
+			fila[2] = own.getLastName();
+			fila[3] = own.getStateResidence();
 			tableModel.addRow(fila);
 		}
 		table.setModel(tableModel);
 		table.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 		table.getTableHeader().setReorderingAllowed(false);
-		TableColumnModel columnModel = table.getColumnModel();
-		columnModel.getColumn(1).setPreferredWidth(100);
-		columnModel.getColumn(2).setPreferredWidth(100);
-		columnModel.getColumn(5).setPreferredWidth(104);
 	}
 }
