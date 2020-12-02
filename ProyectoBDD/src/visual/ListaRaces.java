@@ -126,7 +126,7 @@ public class ListaRaces extends JDialog {
 			tableModel.addRow(fila);
 		}
 		table.setModel(tableModel);
-		table.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+		//table.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 		table.getTableHeader().setReorderingAllowed(false);
 	}
 }
