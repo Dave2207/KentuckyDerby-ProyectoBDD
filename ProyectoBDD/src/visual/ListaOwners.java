@@ -110,7 +110,7 @@ public class ListaOwners extends JDialog {
 			tableModel = new DefaultTableModel();
 			String[] columnNames = {"ID", "Nombre", "Apellido", "Reside en:"};
 			tableModel.setColumnIdentifiers(columnNames);
-			//loadHorses();
+			loadOwners();
 		}
 	}
 	public static void loadOwners() {

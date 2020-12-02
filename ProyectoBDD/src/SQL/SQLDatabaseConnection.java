@@ -219,7 +219,7 @@ public class SQLDatabaseConnection {
 			}
 			
 			try (Statement stmt = con.createStatement()){
-				String sqlQuery = "INSERT INTO Owner (FirstName,LastName,StateResidence)"+" VALUES(?,?,?)";
+				String sqlQuery = "INSERT INTO OwnerHorse (FirstName,LastName,StateResidence)"+" VALUES(?,?,?)";
 				PreparedStatement prepStmt = con.prepareStatement(sqlQuery);
 	//			prepStmt.setInt(1, id);
 				prepStmt.setString(1, nombre);

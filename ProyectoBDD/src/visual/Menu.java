@@ -36,9 +36,10 @@ public class Menu extends JFrame {
 	 * Create the frame.
 	 */
 	public Menu() {
+		setTitle("Men\u00FA principal");
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 538, 371);
+		setBounds(100, 100, 657, 469);
 		setLocationRelativeTo(null);
 		
 		JMenuBar menuBar = new JMenuBar();
@@ -119,6 +120,29 @@ public class Menu extends JFrame {
 			}
 		});
 		mnListas.add(mntmCaballos);
+		
+		JMenuItem mntmDueos = new JMenuItem("Due\u00F1os");
+		mntmDueos.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ListaOwners listO = new ListaOwners();
+				listO.setModal(true);
+				listO.setVisible(true);
+			}
+		});
+		mnListas.add(mntmDueos);
+		
+		JMenuItem mntmEntrenadores = new JMenuItem("Entrenadores");
+		mnListas.add(mntmEntrenadores);
+		
+		JMenuItem mntmJockey = new JMenuItem("Jockey");
+		mntmJockey.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ListadoJockey listJ = new ListadoJockey();
+				listJ.setModal(true);
+				listJ.setVisible(true);
+			}
+		});
+		mnListas.add(mntmJockey);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(new BorderLayout(0, 0));
