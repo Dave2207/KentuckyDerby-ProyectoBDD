@@ -32,6 +32,7 @@ public class InsertTicket extends JDialog {
 	private JTextField txtDatePurchase;
 	private JTextField txtTimePurchase;
 	private JComboBox cbxModoPago;
+	private JTextField txtRace;
 
 	/**
 	 * Launch the application.
@@ -51,7 +52,7 @@ public class InsertTicket extends JDialog {
 	 */
 	public InsertTicket() {
 		setTitle("Insertar Ticket");
-		setBounds(100, 100, 405, 477);
+		setBounds(100, 100, 405, 511);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
@@ -100,40 +101,49 @@ public class InsertTicket extends JDialog {
 		txtBetHorse.setColumns(10);
 		
 		JLabel lblFecha = new JLabel("Fecha Carrera:");
-		lblFecha.setBounds(43, 216, 103, 14);
+		lblFecha.setBounds(43, 261, 103, 14);
 		contentPanel.add(lblFecha);
 		
 		txtDateRace = new JTextField();
-		txtDateRace.setBounds(180, 213, 86, 20);
+		txtDateRace.setBounds(180, 258, 86, 20);
 		contentPanel.add(txtDateRace);
 		txtDateRace.setColumns(10);
 		
 		JLabel lblHora = new JLabel("Hora Carrera:");
-		lblHora.setBounds(43, 263, 103, 14);
+		lblHora.setBounds(43, 308, 103, 14);
 		contentPanel.add(lblHora);
 		
 		txtTimeRace = new JTextField();
-		txtTimeRace.setBounds(180, 260, 86, 20);
+		txtTimeRace.setBounds(180, 305, 86, 20);
 		contentPanel.add(txtTimeRace);
 		txtTimeRace.setColumns(10);
 		
 		JLabel lblFechaCompra = new JLabel("Fecha Compra:");
-		lblFechaCompra.setBounds(43, 306, 103, 14);
+		lblFechaCompra.setBounds(43, 351, 103, 14);
 		contentPanel.add(lblFechaCompra);
 		
 		txtDatePurchase = new JTextField();
-		txtDatePurchase.setBounds(180, 303, 86, 20);
+		txtDatePurchase.setBounds(180, 348, 86, 20);
 		contentPanel.add(txtDatePurchase);
 		txtDatePurchase.setColumns(10);
 		
 		JLabel lblHoraCompra = new JLabel("Hora Compra:");
-		lblHoraCompra.setBounds(43, 348, 86, 14);
+		lblHoraCompra.setBounds(43, 393, 86, 14);
 		contentPanel.add(lblHoraCompra);
 		
 		txtTimePurchase = new JTextField();
-		txtTimePurchase.setBounds(180, 345, 86, 20);
+		txtTimePurchase.setBounds(180, 390, 86, 20);
 		contentPanel.add(txtTimePurchase);
 		txtTimePurchase.setColumns(10);
+		
+		JLabel lblCarrera = new JLabel("Carrera:");
+		lblCarrera.setBounds(43, 216, 46, 14);
+		contentPanel.add(lblCarrera);
+		
+		txtRace = new JTextField();
+		txtRace.setBounds(180, 213, 86, 20);
+		contentPanel.add(txtRace);
+		txtRace.setColumns(10);
 		{
 			JPanel buttonPane = new JPanel();
 			buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
@@ -142,7 +152,8 @@ public class InsertTicket extends JDialog {
 				JButton btnRegistrar = new JButton("Registrar");
 				btnRegistrar.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
-						Ticket boleto = new Ticket(Integer.parseInt(txtCode.getText()), cbxModoPago.getSelectedItem().toString(), Float.parseFloat(txtPrecio.getText()), txtBetHorse.getText(), txtDateRace.getText(), txtTimeRace.getText(), txtDatePurchase.getText(), txtTimePurchase.getText());
+						Ticket boleto = new Ticket(Integer.parseInt(txtCode.getText()), cbxModoPago.getSelectedItem().toString(), Float.parseFloat(txtPrecio.getText()), txtBetHorse.getText(), Integer.parseInt(txtRace.getText()), txtDateRace.getText(), txtTimeRace.getText(), txtDatePurchase.getText(), txtTimePurchase.getText());
+						SQLDatabaseConnection.registrarTicketSQL(boleto.getCode(), boleto.getPaymentMode(), boleto.getPrice(), boleto.getRace(), boleto.getBetHorse(), boleto.getDateRace(), boleto.getTimeRace(), boleto.getDatePurchase(), boleto.getTimePurchase());
 						JOptionPane.showMessageDialog(null, "Operacion Satisfactoria", "Notificacion", JOptionPane.INFORMATION_MESSAGE);
 						clean();
 					}
@@ -168,6 +179,7 @@ public class InsertTicket extends JDialog {
 		txtCode.setText(Integer.valueOf(Derby.getGenCodTicket()).toString());
 		txtBetHorse.setText("");
 		txtPrecio.setText("");
+		txtRace.setText("");
 		txtDateRace.setText("");
 		txtTimeRace.setText("");
 		txtDatePurchase.setText("");

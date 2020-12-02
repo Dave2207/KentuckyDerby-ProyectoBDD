@@ -84,7 +84,7 @@ public class InsertSpectator extends JDialog {
 				JButton btnRegistrar = new JButton("Registrar");
 				btnRegistrar.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
-						Spectator spec = new Spectator(Integer.parseInt(txtTicketNo.getText()), Integer.parseInt(txtBetAmount.getText()), Integer.parseInt(txtAccountNo.getText()));
+						Spectator spec = new Spectator(Integer.parseInt(txtTicketNo.getText()), Float.parseFloat(txtBetAmount.getText()), Integer.parseInt(txtAccountNo.getText()));
 						SQLDatabaseConnection.registrarEspectadorSQL(spec.getTicketNo(), spec.getBetAmount(), spec.getAccountNo());
 						JOptionPane.showMessageDialog(null, "Operacion Satisfactoria", "Notificacion", JOptionPane.INFORMATION_MESSAGE);
 						clean();

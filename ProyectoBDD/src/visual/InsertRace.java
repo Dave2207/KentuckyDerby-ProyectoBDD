@@ -8,6 +8,7 @@ import javax.swing.JDialog;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import SQL.SQLDatabaseConnection;
 import logic.Derby;
 import logic.Race;
 
@@ -129,6 +130,7 @@ public class InsertRace extends JDialog {
 				okButton.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
 						Race carrera = new Race(Integer.parseInt(txtRaceId.getText()), Integer.parseInt(txtDistancia.getText()), cbxTipoRace.getSelectedItem().toString(), txtFechaRace.getText(), txtTiempoRace.getText(), cbxClima.getSelectedItem().toString());
+						SQLDatabaseConnection.registrarCarreraSQL(carrera.getDistance(), carrera.getRaceType(), carrera.getRaceTime(), carrera.getRaceDate(), carrera.getWeather());
 						JOptionPane.showMessageDialog(null, "Operacion Satisfactoria", "Notificacion", JOptionPane.INFORMATION_MESSAGE);
 						clean();
 						

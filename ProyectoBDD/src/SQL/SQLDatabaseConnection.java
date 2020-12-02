@@ -414,10 +414,10 @@ public class SQLDatabaseConnection {
 
 	public static void registrarEspectadorSQL(
 			int TicketNo,
-			int BetAmount,
+			float BetAmount,
 			int AccountNo) {
 		int ticket = TicketNo;
-		int betAmount = BetAmount;
+		float betAmount = BetAmount;
 		int account = AccountNo;
 	
 		
@@ -436,7 +436,7 @@ public class SQLDatabaseConnection {
 				String sqlQuery = "INSERT INTO Spectator ([TickectNo],BetAmount,AccountNo)"+" VALUES(?,?,?)";
 				PreparedStatement prepStmt = con.prepareStatement(sqlQuery);
 				prepStmt.setInt(1, ticket);
-				prepStmt.setInt(2, betAmount);
+				prepStmt.setFloat(2, betAmount);
 				prepStmt.setInt(3, account);
 				prepStmt.executeUpdate();
 				prepStmt.close();
@@ -461,7 +461,7 @@ public class SQLDatabaseConnection {
 	public static void registrarTicketSQL(
 			int Code,
 			String PaymentMode,
-			int Price,
+			float Price,
 			int Race,
 			String BetHorse,
 			String DateRace,
@@ -470,7 +470,7 @@ public class SQLDatabaseConnection {
 			String PurchaseTime) {
 		int code = Code;
 		String payment = PaymentMode;
-		int price = Price;
+		float price = Price;
 		int race = Race; 
 		String betHorse = BetHorse;
 		String date = DateRace;
@@ -495,7 +495,7 @@ public class SQLDatabaseConnection {
 				PreparedStatement prepStmt = con.prepareStatement(sqlQuery);
 				prepStmt.setInt(1, code);
 				prepStmt.setString(2, payment);
-				prepStmt.setInt(3, price);
+				prepStmt.setFloat(3, price);
 				prepStmt.setInt(4, race);
 				prepStmt.setString(5, betHorse);
 				prepStmt.setString(6, date);

@@ -9,6 +9,7 @@ import javax.swing.JDialog;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import SQL.SQLDatabaseConnection;
 import logic.Derby;
 import logic.RaceEntry;
 
@@ -167,6 +168,7 @@ public class InsertRaceEntry extends JDialog {
 					public void actionPerformed(ActionEvent e) {
 						RaceEntry entry = new RaceEntry(Integer.parseInt(txtGateNumber.getText()), txtJockey.getText(), txtHorse.getText(), Integer.parseInt(txtMargins.getText()), Integer.parseInt(txtFinishPos.getText()), Integer.parseInt(txtTimeElapsed.getText()), Integer.parseInt(txtAmountWon.getText()), Integer.parseInt(txtMLineOdds.getText()), Integer.parseInt(txtFinalOdds.getText()));
 						Derby.getInstance().registrarRaceEntry(entry);
+						SQLDatabaseConnection.registrarEntradaSQL(entry.getGateNumber(), entry.getJockeyName(), entry.getMargins(), entry.getFinishPositon(), entry.getTimeElapsed(), entry.getAmountWon(), entry.getHorseName(), entry.getMorningLineOdds(), entry.getFinalOdds());
 						JOptionPane.showMessageDialog(null, "Operacion Satisfactoria", "Notificacion", JOptionPane.INFORMATION_MESSAGE);
 						clean();
 					}
