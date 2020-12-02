@@ -791,15 +791,14 @@ public class SQLDatabaseConnection {
 				 }
 //
 	public static void ModificarCaballoSQL(
-			String HorseName,
 			String Establo,
 			String Gender,
 			int Age,
 			String Gear,
 			int Score,
 			int WonRaces,
-			String Breed) {
-		String nombre = HorseName;
+			String Breed,
+			String HorseName) {
 		String establo = Establo;
 		String gen = Gender;
 		int edad = Age;
@@ -807,6 +806,7 @@ public class SQLDatabaseConnection {
 		int score = Score;
 		int won_races = WonRaces;
 		String breed = Breed;
+		String nombre = HorseName;
 		
 		
 		
@@ -825,17 +825,18 @@ public class SQLDatabaseConnection {
 			        	
 
 			            PreparedStatement ps = con.prepareStatement(
-			            		"UPDATE Horse SET HorseName = ?, Barn = ?, Gender = ?,"
-			            		+ " Age = ?, Gear = ?,Score = ?,WonRaces = ?, Breed = ? WHERE  ID = ? ");
+			            		"UPDATE Horse SET  Barn = ?, Gender = ?,"
+			            		+ " Age = ?, Gear = ?,Score = ?,WonRaces = ?, Breed = ? WHERE  HorseName = ? ");
 
-			            ps.setString(1, nombre);
-			            ps.setString(2, establo);
-			            ps.setString(3, gen);
-			            ps.setInt(4, edad);
-			            ps.setString(5, gear);
-			            ps.setInt(6, score);
-			            ps.setInt(7, won_races);
-			            ps.setString(8, breed);
+			           
+			            ps.setString(1, establo);
+			            ps.setString(2, gen);
+			            ps.setInt(3, edad);
+			            ps.setString(4, gear);
+			            ps.setInt(5, score);
+			            ps.setInt(6, won_races);
+			            ps.setString(7, breed);
+			            ps.setString(8, nombre);
 			            ps.executeUpdate();
 			            ps.close();
 			            
