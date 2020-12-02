@@ -9,7 +9,8 @@ import java.sql.Statement;
 public class SQLDatabaseConnection {
 
 	public static void main(String[] args) {
-		registrarEmpleadoSQL("David", "Vasquez", 21, "22-7-1999", "M", "LOL", 51000);
+		//registrarEmpleadoSQL("David", "Vasquez", 21, "22-7-1999", "M", "LOL", 51000);
+		ModificarEmpleadoSQL("Jose", "Cabrera", 54, "1-1-1950", "M", "Manager", 51000, 7);
 	}
 	///INSERTAR
 	public static void registrarEmpleadoSQL(
@@ -722,18 +723,18 @@ public class SQLDatabaseConnection {
 				e.printStackTrace();
 			}			
 		}
-///MODIFICAR 
+///MODIFICAR
 	
 	public static void ModificarEmpleadoSQL (
-//			int ID,
 			String firstName,
 			String lastName,
 			int age,
 			String birthday,
 			String gender,
 			String Position,
-			int ZIP_Code) {
-//		int id = ID;
+			int ZIP_Code,
+			int ID) {
+		int id = ID;
 		String nombre = firstName;
 		String apellido = lastName;
 		int edad = age;
@@ -758,8 +759,8 @@ public class SQLDatabaseConnection {
 			        	
 
 			            PreparedStatement ps = con.prepareStatement(
-			            		"UPDATE Empleado firstName = ?, lastName = ?,age = ?,"
-			            		+ " birthday = ?, gender = ?,Position = ?,ZIP_Code = ?, WHERE  ID = ? ");
+			            		"UPDATE Employee SET firstName = ?, lastName = ?,age = ?,"
+			            		+ " birthday = ?, gender = ?,Position = ?,ZIP_Code = ? WHERE  ID = ? ");
 
 			            ps.setString(1, nombre);
 			            ps.setString(2, apellido);
@@ -768,6 +769,7 @@ public class SQLDatabaseConnection {
 			            ps.setString(5, genero);
 			            ps.setString(6, pos);
 			            ps.setInt(7, ZIP);
+			            ps.setInt(8, id);
 			            ps.executeUpdate();
 			            ps.close();
 			            
