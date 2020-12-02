@@ -722,6 +722,71 @@ public class SQLDatabaseConnection {
 				e.printStackTrace();
 			}			
 		}
+///MODIFICAR 
+	
+	public static void ModificarEmpleadoSQL (
+//			int ID,
+			String firstName,
+			String lastName,
+			int age,
+			String birthday,
+			String gender,
+			String Position,
+			int ZIP_Code) {
+//		int id = ID;
+		String nombre = firstName;
+		String apellido = lastName;
+		int edad = age;
+		String fechaNac = birthday;
+		String genero = gender;
+		String pos = Position;
+		int ZIP = ZIP_Code;
+		
+		
+		Connection con = null;
+		
+		try {
+			String dbURL = "jdbc:sqlserver://localhost;integratedSecurity=true;databaseName=ProyectoBDD";
+			String user = "DavidV";
+			String pass = "2271999";
+			con = DriverManager.getConnection(dbURL, user, pass);
+			if(con != null) {
+				System.out.println("Conexion establecida");
+			}
+
+			        try (Statement stmt = con.createStatement()) {
+			        	
+
+			            PreparedStatement ps = con.prepareStatement(
+			            		"UPDATE Empleado firstName = ?, lastName = ?,age = ?,"
+			            		+ " birthday = ?, gender = ?,Position = ?,ZIP_Code = ?, WHERE  ID = ? ");
+
+			            ps.setString(1, nombre);
+			            ps.setString(2, apellido);
+			            ps.setInt(3, edad);
+			            ps.setString(4, fechaNac);
+			            ps.setString(5, genero);
+			            ps.setString(6, pos);
+			            ps.setInt(7, ZIP);
+			            ps.executeUpdate();
+			            ps.close();
+			            
+			        } catch (SQLException e) {
+			          e.printStackTrace();
+			        }        
+
+			    } catch (SQLException ex) {
+			        ex.printStackTrace();
+			    } finally {
+			        try {
+			            if (con != null && !con.isClosed()) {
+			                con.close();
+			            }
+			        } catch (SQLException ex) {
+			            ex.printStackTrace();
+			        }
+			    }
+				 }
 }
 
 
