@@ -11,12 +11,14 @@ public class Derby {
 	private ArrayList<Trainer> trainers;
 	private ArrayList<Race> races;
 	private ArrayList<RaceEntry> entries;
+	private ArrayList<Spectator> spectators;
 	private static int genCodEmp = 1;
 	private static int genCodJockey = 1;
 	private static int genCodOwner = 1;
 	private static int genCodTrainer = 1;
 	private static int genCodRace = 1;
 	private static int genCodRaceEntry = 1;
+	private static int genCodSpectator = 1;
 	private static Derby derb = null;
 	
 	private Derby() {
@@ -28,6 +30,8 @@ public class Derby {
 		this.trainers = new ArrayList<Trainer>();
 		this.races = new ArrayList<Race>();
 		this.entries = new ArrayList<RaceEntry>();
+		this.spectators = new ArrayList<Spectator>();
+	
 	}
 	
 	public static Derby getInstance() {
@@ -81,6 +85,11 @@ public class Derby {
 		return races;
 	}
 	
+	public void setRaces(ArrayList<Race> races) {
+		this.races = races;
+	}
+
+	
 	public ArrayList<RaceEntry> getRaceEntrys() {
 		return entries;
 	}
@@ -89,9 +98,14 @@ public class Derby {
 		this.entries = entries;
 	}
 
-	public void setRaces(ArrayList<Race> races) {
-		this.races = races;
+	public ArrayList<Spectator> getSpectators() {
+		return spectators;
 	}
+
+	public void setSpectators(ArrayList<Spectator> spectators) {
+		this.spectators = spectators;
+	}
+	
 	
 	public void registrarEmpleado(Employee employee) {
 		employees.add(employee);
@@ -143,6 +157,16 @@ public class Derby {
 		genCodRaceEntry--;
 		
 	}
+	
+	public void registrarSpectators(Spectator spectator) {
+		spectators.add(spectator);
+	}
+	
+	public void eliminarSpectators(Spectator spectator) {
+		spectators.remove(spectator);
+		genCodSpectator--;
+		
+	}
 
 	public static int getGenCodJockey() {
 		return genCodJockey;
@@ -192,6 +216,13 @@ public class Derby {
 		Derby.genCodRaceEntry = genCodRaceEntry;
 	}
 	
+	public static int getGenCodSpectator() {
+		return genCodSpectator;
+	}
+
+	public static void setGenCodSpectator(int genCodSpectator) {
+		Derby.genCodSpectator = genCodSpectator;
+	}
 
 	public void registrarTrainer(Trainer tra) {
 		trainers.add(tra);
@@ -298,4 +329,19 @@ public class Derby {
 		}
 		return jockey;
 	}
+	
+	public Spectator FindSpectatorByID(int id) {
+		Spectator spectator = null;
+		boolean found = false;
+		int i = 0;
+		while(!found && i<spectators.size()) {
+			if(spectators.get(i).getTicketNo() == id) {
+				spectator = spectators.get(i);
+				found = true;
+			}
+			i++;
+		}
+		return spectator;
+	}
+	
 }

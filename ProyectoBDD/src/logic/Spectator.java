@@ -3,14 +3,14 @@ package logic;
 public class Spectator {
 	
 	private int TicketNo;
-	private float BetAmount; 
-	private int AccontNo;
+	private int BetAmount; 
+	private int AccountNo;
 	
-public Spectator(int ticketNo, float betAmount, int accontNo) {
+public Spectator(int ticketNo, int betAmount, int accountNo) {
 		super();
 		TicketNo = ticketNo;
 		BetAmount = betAmount;
-		AccontNo = accontNo;
+		AccountNo = accountNo;
 	}
 	//	*** Getters & Setters****
 	public int getTicketNo() {
@@ -19,17 +19,17 @@ public Spectator(int ticketNo, float betAmount, int accontNo) {
 	public void setTicketNo(int ticketNo) {
 		TicketNo = ticketNo;
 	}
-	public float getBetAmount() {
+	public int getBetAmount() {
 		return BetAmount;
 	}
-	public void setBetAmount(float betAmount) {
+	public void setBetAmount(int betAmount) {
 		BetAmount = betAmount;
 	}
-	public int getAccontNo() {
-		return AccontNo;
+	public int getAccountNo() {
+		return AccountNo;
 	}
-	public void setAccontNo(int accontNo) {
-		AccontNo = accontNo;
+	public void setAccountNo(int accountNo) {
+		AccountNo = accountNo;
 	} 
 
 }
