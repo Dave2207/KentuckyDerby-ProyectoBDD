@@ -787,6 +787,72 @@ public class SQLDatabaseConnection {
 			        }
 			    }
 				 }
+//
+	public static void ModificarCaballoSQL(
+			String HorseName,
+			String Establo,
+			String Gender,
+			int Age,
+			String Gear,
+			int Score,
+			int WonRaces,
+			String Breed) {
+		String nombre = HorseName;
+		String establo = Establo;
+		String gen = Gender;
+		int edad = Age;
+		String gear = Gear;
+		int score = Score;
+		int won_races = WonRaces;
+		String breed = Breed;
+		
+		
+		
+		Connection con = null;
+		
+		try {
+			String dbURL = "jdbc:sqlserver://localhost;integratedSecurity=true;databaseName=ProyectoBDD";
+			String user = "DavidV";
+			String pass = "2271999";
+			con = DriverManager.getConnection(dbURL, user, pass);
+			if(con != null) {
+				System.out.println("Conexion establecida");
+			}
+
+			        try (Statement stmt = con.createStatement()) {
+			        	
+
+			            PreparedStatement ps = con.prepareStatement(
+			            		"UPDATE Horse SET HorseName = ?, Barn = ?, Gender = ?,"
+			            		+ " Age = ?, Gear = ?,Score = ?,WonRaces = ?, Breed = ? WHERE  ID = ? ");
+
+			            ps.setString(1, nombre);
+			            ps.setString(2, establo);
+			            ps.setString(3, gen);
+			            ps.setInt(4, edad);
+			            ps.setString(5, gear);
+			            ps.setInt(6, score);
+			            ps.setInt(7, won_races);
+			            ps.setString(8, breed);
+			            ps.executeUpdate();
+			            ps.close();
+			            
+			        } catch (SQLException e) {
+			          e.printStackTrace();
+			        }        
+
+			    } catch (SQLException ex) {
+			        ex.printStackTrace();
+			    } finally {
+			        try {
+			            if (con != null && !con.isClosed()) {
+			                con.close();
+			            }
+			        } catch (SQLException ex) {
+			            ex.printStackTrace();
+			        }
+			    }
+				 }
 }
 
 
