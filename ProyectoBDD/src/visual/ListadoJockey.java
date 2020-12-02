@@ -126,9 +126,6 @@ public class ListadoJockey extends JDialog {
 		table.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 		table.getTableHeader().setReorderingAllowed(false);
 		TableColumnModel columnModel = table.getColumnModel();
-		columnModel.getColumn(1).setPreferredWidth(100);
-		columnModel.getColumn(2).setPreferredWidth(100);
-		columnModel.getColumn(5).setPreferredWidth(104);
 	}
 }
 

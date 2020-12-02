@@ -98,6 +98,15 @@ public class Menu extends JFrame {
 		});
 		mnUsuarios.add(mntmRegistrarDueo);
 		
+		JMenuItem mntmInsertarCarrera = new JMenuItem("Insertar Carrera");
+		mnUsuarios.add(mntmInsertarCarrera);
+		
+		JMenuItem mntmInsertarTicket = new JMenuItem("Insertar Ticket");
+		mnUsuarios.add(mntmInsertarTicket);
+		
+		JMenuItem mntmInsertarRaceentry = new JMenuItem("Insertar RaceEntry");
+		mnUsuarios.add(mntmInsertarRaceentry);
+		
 		JMenu mnListas = new JMenu("Listas");
 		menuBar.add(mnListas);
 		
@@ -132,6 +141,13 @@ public class Menu extends JFrame {
 		mnListas.add(mntmDueos);
 		
 		JMenuItem mntmEntrenadores = new JMenuItem("Entrenadores");
+		mntmEntrenadores.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ListaEntrenador listEn = new ListaEntrenador();
+				listEn.setModal(true);
+				listEn.setVisible(true);
+			}
+		});
 		mnListas.add(mntmEntrenadores);
 		
 		JMenuItem mntmJockey = new JMenuItem("Jockey");
@@ -153,6 +169,16 @@ public class Menu extends JFrame {
 			}
 		});
 		mnListas.add(mntmCarreras);
+		
+		JMenuItem mntmEspectadores = new JMenuItem("Espectadores");
+		mntmEspectadores.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ListaEspectador listEsp = new ListaEspectador();
+				listEsp.setModal(true);
+				listEsp.setVisible(true);
+			}
+		});
+		mnListas.add(mntmEspectadores);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(new BorderLayout(0, 0));
