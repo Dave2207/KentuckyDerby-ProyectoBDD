@@ -143,6 +143,16 @@ public class Menu extends JFrame {
 			}
 		});
 		mnListas.add(mntmJockey);
+		
+		JMenuItem mntmCarreras = new JMenuItem("Carreras");
+		mntmCarreras.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ListaRaces listR = new ListaRaces();
+				listR.setModal(true);
+				listR.setVisible(true);
+			}
+		});
+		mnListas.add(mntmCarreras);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(new BorderLayout(0, 0));
