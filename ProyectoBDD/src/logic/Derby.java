@@ -12,6 +12,7 @@ public class Derby {
 	private ArrayList<Race> races;
 	private ArrayList<RaceEntry> entries;
 	private ArrayList<Spectator> spectators;
+	private ArrayList<Ticket> tickets;
 	private static int genCodEmp = 1;
 	private static int genCodJockey = 1;
 	private static int genCodOwner = 1;
@@ -19,6 +20,7 @@ public class Derby {
 	private static int genCodRace = 1;
 	private static int genCodRaceEntry = 1;
 	private static int genCodSpectator = 1;
+	private static int genCodTicket = 1;
 	private static Derby derb = null;
 	
 	private Derby() {
@@ -31,6 +33,7 @@ public class Derby {
 		this.races = new ArrayList<Race>();
 		this.entries = new ArrayList<RaceEntry>();
 		this.spectators = new ArrayList<Spectator>();
+		this.tickets = new ArrayList<Ticket>();
 	
 	}
 	
@@ -106,6 +109,14 @@ public class Derby {
 		this.spectators = spectators;
 	}
 	
+	public ArrayList<Ticket> getTickets() {
+		return tickets;
+	}
+
+	public void setTickets(ArrayList<Ticket> tickets) {
+		this.tickets = tickets;
+	}
+	
 	
 	public void registrarEmpleado(Employee employee) {
 		employees.add(employee);
@@ -167,6 +178,16 @@ public class Derby {
 		genCodSpectator--;
 		
 	}
+	
+	public void registrarTicket(Ticket ticket) {
+		tickets.add(ticket);
+	}
+	
+	public void eliminarTicket(Ticket ticket) {
+		tickets.remove(ticket);
+		genCodTicket--;
+		
+	}
 
 	public static int getGenCodJockey() {
 		return genCodJockey;
@@ -224,6 +245,14 @@ public class Derby {
 		Derby.genCodSpectator = genCodSpectator;
 	}
 
+	public static int getGenCodTicket() {
+		return genCodTicket;
+	}
+
+	public static void setGenCodTicket(int genCodTicket) {
+		Derby.genCodTicket = genCodTicket;
+	}
+	
 	public void registrarTrainer(Trainer tra) {
 		trainers.add(tra);
 		genCodTrainer++;
@@ -342,6 +371,20 @@ public class Derby {
 			i++;
 		}
 		return spectator;
+	}
+	
+	public Ticket FindTicketByID(int id) {
+		Ticket ticket = null;
+		boolean found = false;
+		int i = 0;
+		while(!found && i<tickets.size()) {
+			if(tickets.get(i).getCode() == id) {
+				ticket = tickets.get(i);
+				found = true;
+			}
+			i++;
+		}
+		return ticket;
 	}
 	
 }

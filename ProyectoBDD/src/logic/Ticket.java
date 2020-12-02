@@ -4,13 +4,13 @@ public class Ticket {
 	private int code;
 	private String paymentMode;
 	private float price;
-	private Horse BetHorse;
+	private String BetHorse;
 	private String DateRace;
 	private String TimeRace;
 	private String DatePurchase;
 	private String TimePurchase;
 	
-	public Ticket(int code, String paymentMode, float price, Horse betHorse, String dateRace, String timeRace,
+	public Ticket(int code, String paymentMode, float price, String betHorse, String dateRace, String timeRace,
 			String datePurchase, String timePurchase) {
 		super();
 		this.code = code;
@@ -47,11 +47,11 @@ public class Ticket {
 		this.price = price;
 	}
 
-	public Horse getBetHorse() {
+	public String getBetHorse() {
 		return BetHorse;
 	}
 
-	public void setBetHorse(Horse betHorse) {
+	public void setBetHorse(String betHorse) {
 		BetHorse = betHorse;
 	}
 
