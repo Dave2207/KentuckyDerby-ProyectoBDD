@@ -2,6 +2,7 @@ package logic;
 
 import java.util.ArrayList;
 
+
 public class Derby {
 	private ArrayList<Employee> employees;
 	private ArrayList<Horse> horses;
@@ -9,11 +10,13 @@ public class Derby {
 	private ArrayList<Owner> owners;
 	private ArrayList<Trainer> trainers;
 	private ArrayList<Race> races;
+	private ArrayList<RaceEntry> entries;
 	private static int genCodEmp = 1;
 	private static int genCodJockey = 1;
 	private static int genCodOwner = 1;
 	private static int genCodTrainer = 1;
 	private static int genCodRace = 1;
+	private static int genCodRaceEntry = 1;
 	private static Derby derb = null;
 	
 	private Derby() {
@@ -24,6 +27,7 @@ public class Derby {
 		this.owners = new ArrayList<Owner>();
 		this.trainers = new ArrayList<Trainer>();
 		this.races = new ArrayList<Race>();
+		this.entries = new ArrayList<RaceEntry>();
 	}
 	
 	public static Derby getInstance() {
@@ -76,6 +80,14 @@ public class Derby {
 	public ArrayList<Race> getRaces() {
 		return races;
 	}
+	
+	public ArrayList<RaceEntry> getRaceEntrys() {
+		return entries;
+	}
+
+	public void setRaceEntrys(ArrayList<RaceEntry> entries) {
+		this.entries = entries;
+	}
 
 	public void setRaces(ArrayList<Race> races) {
 		this.races = races;
@@ -121,6 +133,16 @@ public class Derby {
 		genCodRace--;
 		
 	}
+	
+	public void registrarRaceEntry(RaceEntry entry) {
+		entries.add(entry);
+	}
+	
+	public void eliminarRaceEntry(RaceEntry entry) {
+		entries.remove(entry);
+		genCodRaceEntry--;
+		
+	}
 
 	public static int getGenCodJockey() {
 		return genCodJockey;
@@ -160,6 +182,14 @@ public class Derby {
 
 	public static void setGenCodRace(int genCodRace) {
 		Derby.genCodRace = genCodRace;
+	}
+	
+	public static int getGenCodRaceEntry() {
+		return genCodRaceEntry;
+	}
+
+	public static void setGenCodRaceEntry(int genCodRaceEntry) {
+		Derby.genCodRaceEntry = genCodRaceEntry;
 	}
 	
 
@@ -225,6 +255,20 @@ public class Derby {
 			i++;
 		}
 		return race;
+	}
+	
+	public RaceEntry FindRaceEntryByID(int id) {
+		RaceEntry entry = null;
+		boolean found = false;
+		int i = 0;
+		while(!found && i<entries.size()) {
+			if(entries.get(i).getGateNumber() == id) {
+				entry = entries.get(i);
+				found = true;
+			}
+			i++;
+		}
+		return entry;
 	}
 	
 	public Horse FindHorseByName(String name) {
