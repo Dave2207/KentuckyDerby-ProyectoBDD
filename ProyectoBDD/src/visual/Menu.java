@@ -99,12 +99,33 @@ public class Menu extends JFrame {
 		mnUsuarios.add(mntmRegistrarDueo);
 		
 		JMenuItem mntmInsertarCarrera = new JMenuItem("Insertar Carrera");
+		mntmInsertarCarrera.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				InsertRace insRace = new InsertRace();
+				insRace.setModal(true);
+				insRace.setVisible(true);
+			}
+		});
 		mnUsuarios.add(mntmInsertarCarrera);
 		
 		JMenuItem mntmInsertarTicket = new JMenuItem("Insertar Ticket");
+		mntmInsertarTicket.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				InsertTicket insTicket = new InsertTicket();
+				insTicket.setModal(true);
+				insTicket.setVisible(true);
+			}
+		});
 		mnUsuarios.add(mntmInsertarTicket);
 		
 		JMenuItem mntmInsertarRaceentry = new JMenuItem("Insertar RaceEntry");
+		mntmInsertarRaceentry.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				InsertRaceEntry insRaceE = new InsertRaceEntry();
+				insRaceE.setModal(true);
+				insRaceE.setVisible(true);
+			}
+		});
 		mnUsuarios.add(mntmInsertarRaceentry);
 		
 		JMenu mnListas = new JMenu("Listas");
