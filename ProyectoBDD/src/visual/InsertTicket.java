@@ -153,6 +153,7 @@ public class InsertTicket extends JDialog {
 				btnRegistrar.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
 						Ticket boleto = new Ticket(Integer.parseInt(txtCode.getText()), cbxModoPago.getSelectedItem().toString(), Float.parseFloat(txtPrecio.getText()), txtBetHorse.getText(), Integer.parseInt(txtRace.getText()), txtDateRace.getText(), txtTimeRace.getText(), txtDatePurchase.getText(), txtTimePurchase.getText());
+						Derby.getInstance().registrarTicket(boleto);
 						SQLDatabaseConnection.registrarTicketSQL(boleto.getCode(), boleto.getPaymentMode(), boleto.getPrice(), boleto.getRace(), boleto.getBetHorse(), boleto.getDateRace(), boleto.getTimeRace(), boleto.getDatePurchase(), boleto.getTimePurchase());
 						JOptionPane.showMessageDialog(null, "Operacion Satisfactoria", "Notificacion", JOptionPane.INFORMATION_MESSAGE);
 						clean();
