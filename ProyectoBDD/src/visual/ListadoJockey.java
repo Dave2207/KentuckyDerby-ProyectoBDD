@@ -26,6 +26,7 @@ public class ListadoJockey extends JDialog {
 	private static DefaultTableModel tableModel;
 	private static JButton btnEliminar;
 	private int code;
+	private static JButton btnModificar;
 	private static JTable table;
 
 	/**
@@ -64,10 +65,11 @@ public class ListadoJockey extends JDialog {
 						SQLDatabaseConnection.EliminarJineteSQL(code);
 						loadJockeys();
 						btnEliminar.setEnabled(false);
+						btnModificar.setEnabled(false);
 					}
 				});
 				{
-					JButton btnModificar = new JButton("Modificar");
+					btnModificar = new JButton("Modificar");
 					btnModificar.setEnabled(false);
 					buttonPane.add(btnModificar);
 				}
@@ -99,6 +101,7 @@ public class ListadoJockey extends JDialog {
 				public void mouseClicked(MouseEvent e) {
 					if(table.getSelectedRow()>=0) {
 						btnEliminar.setEnabled(true);
+						btnModificar.setEnabled(true);
 						int index = table.getSelectedRow();
 						code = (int)table.getModel().getValueAt(index, 0);
 					}

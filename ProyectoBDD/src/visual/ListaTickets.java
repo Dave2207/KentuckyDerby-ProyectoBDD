@@ -26,6 +26,7 @@ public class ListaTickets extends JDialog {
 	private static Object[] fila;
 	private static DefaultTableModel tableModel;
 	private static JButton btnEliminar;
+	private static JButton btnModificar;
 	private int code;
 	private static JTable table;
 
@@ -66,10 +67,11 @@ public class ListaTickets extends JDialog {
 						JOptionPane.showMessageDialog(null, "Se ha borrado este registro", "Notificacion", JOptionPane.INFORMATION_MESSAGE);
 						loadTickets();
 						btnEliminar.setEnabled(false);
+						btnModificar.setEnabled(false);
 					}
 				});
 				{
-					JButton btnModificar = new JButton("Modificar");
+					btnModificar = new JButton("Modificar");
 					btnModificar.setEnabled(false);
 					buttonPane.add(btnModificar);
 				}
@@ -101,6 +103,7 @@ public class ListaTickets extends JDialog {
 				public void mouseClicked(MouseEvent e) {
 					if(table.getSelectedRow()>=0) {
 						btnEliminar.setEnabled(true);
+						btnModificar.setEnabled(true);
 						int index = table.getSelectedRow();
 						code = (int)table.getModel().getValueAt(index, 0);
 					}

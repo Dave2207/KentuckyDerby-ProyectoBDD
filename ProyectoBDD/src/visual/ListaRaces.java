@@ -26,6 +26,7 @@ public class ListaRaces extends JDialog {
 	private final JPanel contentPanel = new JPanel();
 	private static Object[] fila;
 	private static JButton btnEliminar;
+	private static JButton btnModificar;
 	private static DefaultTableModel tableModel;
 	private static JTable table;
 	private static int code;
@@ -70,10 +71,11 @@ public class ListaRaces extends JDialog {
 						JOptionPane.showMessageDialog(null, "Se ha borrado este registro", "Notificacion", JOptionPane.INFORMATION_MESSAGE);
 						loadRaces();
 						btnEliminar.setEnabled(false);
+						btnModificar.setEnabled(false);
 					}
 				});
 				{
-					JButton btnModificar = new JButton("Modificar");
+					btnModificar = new JButton("Modificar");
 					btnModificar.setEnabled(false);
 					buttonPane.add(btnModificar);
 				}
@@ -106,6 +108,7 @@ public class ListaRaces extends JDialog {
 				public void mouseClicked(MouseEvent e) {
 					if(table.getSelectedRow()>=0) {
 						btnEliminar.setEnabled(true);
+						btnModificar.setEnabled(true);
 						int index = table.getSelectedRow();
 						code = (int) table.getModel().getValueAt(index, 0);
 					}

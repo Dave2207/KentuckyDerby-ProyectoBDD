@@ -28,6 +28,7 @@ public class ListaCaballos extends JDialog {
 	private static JButton btnEliminar;
 	private String code;
 	private static JTable table;
+	private static JButton btnModificar;
 
 	/**
 	 * Launch the application.
@@ -66,10 +67,11 @@ public class ListaCaballos extends JDialog {
 						JOptionPane.showMessageDialog(null, "Se ha borrado este registro", "Notificacion", JOptionPane.INFORMATION_MESSAGE);
 						loadHorses();
 						btnEliminar.setEnabled(false);
+						btnModificar.setEnabled(false);
 					}
 				});
 				{
-					JButton btnModificar = new JButton("Modificar");
+					btnModificar = new JButton("Modificar");
 					btnModificar.setEnabled(false);
 					buttonPane.add(btnModificar);
 				}
@@ -101,6 +103,7 @@ public class ListaCaballos extends JDialog {
 				public void mouseClicked(MouseEvent e) {
 					if(table.getSelectedRow()>=0) {
 						btnEliminar.setEnabled(true);
+						btnModificar.setEnabled(true);
 						int index = table.getSelectedRow();
 						code = (String)table.getModel().getValueAt(index, 0);
 					}
