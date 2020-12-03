@@ -72,6 +72,11 @@ public class ListaRaces extends JDialog {
 						btnEliminar.setEnabled(false);
 					}
 				});
+				{
+					JButton btnModificar = new JButton("Modificar");
+					btnModificar.setEnabled(false);
+					buttonPane.add(btnModificar);
+				}
 				btnEliminar.setEnabled(false);
 				btnEliminar.setActionCommand("OK");
 				buttonPane.add(btnEliminar);
