@@ -79,7 +79,7 @@ public class ListaRaces extends JDialog {
 					btnModificar.addActionListener(new ActionListener() {
 						public void actionPerformed(ActionEvent e) {
 							Race race = Derby.getInstance().FindRaceByID(code);
-							SQLDatabaseConnection.ModificarCarreraSQL(race.getDistance(), race.getRaceType(), race.getRaceTime(), race.getRaceDate(), race.getWeather(), race.getRaceID());
+							SQLDatabaseConnection.ModificarCarreraSQL(Integer.parseInt(fila[1].toString()), fila[2].toString(), fila[3].toString(), fila[4].toString(), fila[5].toString(), race.getRaceID());
 							JOptionPane.showMessageDialog(null, "Se ha borrado este registro", "Notificacion", JOptionPane.INFORMATION_MESSAGE);
 							btnEliminar.setEnabled(false);
 							btnModificar.setEnabled(false);

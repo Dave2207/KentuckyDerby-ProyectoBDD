@@ -151,6 +151,7 @@ public class Derby {
 	
 	public void registrarRace(Race race) {
 		races.add(race);
+		genCodRace++;
 	}
 	
 	public void eliminarRace(Race race) {
@@ -161,6 +162,7 @@ public class Derby {
 	
 	public void registrarRaceEntry(RaceEntry entry) {
 		entries.add(entry);
+		genCodRaceEntry++;
 	}
 	
 	public void eliminarRaceEntry(RaceEntry entry) {
@@ -171,6 +173,7 @@ public class Derby {
 	
 	public void registrarSpectators(Spectator spectator) {
 		spectators.add(spectator);
+		genCodSpectator++;
 	}
 	
 	public void eliminarSpectators(Spectator spectator) {
